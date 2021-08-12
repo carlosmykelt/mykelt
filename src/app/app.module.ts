@@ -24,6 +24,11 @@ import { RouterModule } from '@angular/router';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ListaPostComponent } from './post/lista-post.component';
+import { NuevoPostComponent } from './post/nuevo-post.component';
+import { EditarPostComponent } from './post/editar-post.component';
+import { CKEditorModule } from 'ckeditor4-angular';
+import { FullPostComponent } from './post/full-post.component';
 
 
 // import * as bootstrap from "bootstrap";
@@ -43,6 +48,10 @@ registerLocaleData(localeEs, 'es');
     MenuComponent,
     IndexComponent,
     FilterPipe,
+    ListaPostComponent,
+    NuevoPostComponent,
+    EditarPostComponent,
+    FullPostComponent,
 
 
   ],
@@ -54,7 +63,9 @@ registerLocaleData(localeEs, 'es');
     HttpClientModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
+
   ],
   providers: [
     interceptorProvider,

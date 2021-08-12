@@ -12,6 +12,9 @@ import { ProdGuardService } from './guards/prod-guard.service';
 
 
 import { LoginGuard } from './guards/login.guard';
+import { ListaPostComponent } from './post/lista-post.component';
+import { NuevoPostComponent } from './post/nuevo-post.component';
+import { FullPostComponent } from './post/full-post.component';
 
 
 
@@ -26,6 +29,11 @@ const routes: Routes = [
 
   { path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
   { path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+
+  { path: 'articulos', component: ListaPostComponent },
+  { path: 'articulos/nuevo', component: NuevoPostComponent },
+  { path: ':id', component: FullPostComponent },
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

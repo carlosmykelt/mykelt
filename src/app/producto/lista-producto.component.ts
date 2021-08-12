@@ -17,8 +17,6 @@ import { DecimalPipe } from '@angular/common'; // para decimal pipe
 })
 export class ListaProductoComponent implements OnInit {
 
-
-
   productos: Producto[] = [];
   productosCartera: Producto[] = [];
 
@@ -26,11 +24,7 @@ export class ListaProductoComponent implements OnInit {
 
   duplicado: Producto[] = [];
 
-
-
   listaAdmin: Producto[] = [];
-
-
 
   isAdmin = false;
 

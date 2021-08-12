@@ -1,0 +1,46 @@
+<app-menu></app-menu>
+
+<div class="mb-5">
+  <br>
+</div>
+
+
+<p class="h3 text-center"> Artículos </p>
+  <br>
+
+<p class="text-center">
+   <button class="btn btn-primary mb-5" routerLink="nuevo"> Crear artículo </button>
+</p> 
+
+<!-- <div class="container d-flex justify-content-center"> -->
+
+  <div class="container d-flex justify-content-around flex-wrap"> 
+    <div class="col-lg-5" *ngFor="let post of posts">
+
+      <div class="card mb-5 ">
+
+          <!-- {{post.image}}     intento con d-inline, miraré otro -->
+          <table class="table d-inline">
+            <tr>
+              <td>{{post.name}}</td>
+            </tr>
+            <tr>
+              <td>
+                Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien.
+                <!-- <div [innerHTML]="post.body"></div> -->
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="btn btn-outline-dark" routerLink="/{{post.id}}">Ver artículo </button>
+              </td>
+            </tr>
+              <!-- Ponemos div innerhtml para que renderice el html -->
+              <!-- {{post.body}} -->
+          </table>
+        
+      </div>
+    </div>
+  </div>
+<!-- 
+</div> -->

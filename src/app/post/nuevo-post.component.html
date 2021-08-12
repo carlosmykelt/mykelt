@@ -1,0 +1,69 @@
+<app-menu></app-menu>
+
+    <!-- ckeditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
+
+<!-- <div id="editor">
+    <p>This is some sample content.</p>
+</div> -->
+
+
+
+<!-- <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script> -->
+
+
+<div class="py-5">
+    <!-- col-lg-4 -->
+    <!-- border rounded shadow-->
+    <div class=" container col-lg-7 bg-white  my-5 py-4 px-3 ">
+        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+
+
+            <div class="form-group">
+                <!-- <label for="name">Nombre</label> -->
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required placeholder="Escribe aquí el nombre">
+            </div>
+
+            <div class="form-group mt-5">
+                
+                <!-- <label class="my-4" for="body">Cuerpo del artículo</label> -->
+                <!-- class="form-control" -->
+                <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="body" name="body" ></ckeditor>
+            </div> 
+
+            <!-- <div class="form-group">
+                <label for="body">Cuerpo del artículo</label>
+
+
+
+                <input type="textarea" class="form-control" id="body" name="body" [(ngModel)]="body" required>
+            </div>             -->
+        
+            <div class="d-flex justify-content-around mt-5">
+            <a class="linkmin btn btn-block" routerLink="/articulos"> Volver </a>
+            <button class="btn boton btn-block" [disabled]="!f.valid">
+                <!-- <i class="fas fa-plus-circle"></i>  -->
+                Crear
+            </button>
+            </div>
+
+
+
+
+        </form>
+
+
+    </div>
+</div>
+<!-- 
+<button class="btn btn-danger" (click)="imprime()">Imprime</button>
+
+<ckeditor data="<p>Hello, world!</p><br>hello" type="inline"  [(ngModel)]="body" name="body" readOnly="true" ></ckeditor>
+ -->
