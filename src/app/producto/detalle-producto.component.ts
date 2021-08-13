@@ -38,7 +38,7 @@ export class DetalleProductoComponent implements OnInit {
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+          timeOut: 3000
         });
         this.volver();
       }

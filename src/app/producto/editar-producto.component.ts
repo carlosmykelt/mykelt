@@ -32,8 +32,8 @@ export class EditarProductoComponent implements OnInit {
         this.cargandoeditar = false;
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+        this.toastr.error(err.error.mensaje, 'Error', {
+          timeOut: 3000
         });
         this.router.navigate(['/']);
       }
@@ -45,14 +45,14 @@ export class EditarProductoComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.productoService.update(id, this.producto).subscribe(
       data => {
-        this.toastr.success('Producto actualizado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
+        this.toastr.success('Producto actualizado', '', {
+          timeOut: 3000
         });
         this.router.navigate(['/lista']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+          timeOut: 3000
         });
 
       }

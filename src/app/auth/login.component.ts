@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       err => { // en caso de error
         this.errMsj = err.error.message;  // variable que habíamos creado para el error, saldrá el mensaje del backend
         this.toastr.error(this.errMsj, 'Error', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+          timeOut: 3000
         });
 
         this.cargandoLogin = false;   

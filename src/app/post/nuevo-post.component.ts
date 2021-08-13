@@ -54,14 +54,14 @@ export class NuevoPostComponent implements OnInit {
     const post = new Post(this.name, this.body);
     this.postService.save(post).subscribe(
       data => {
-        this.toastr.success('Producto creado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
+        this.toastr.success('Artículo creado', '', {
+          timeOut: 3000
         });
         this.router.navigate(['/articulos']);
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+        this.toastr.error(err.error.mensaje, 'Error', {
+          timeOut: 3000
         });
 
       }

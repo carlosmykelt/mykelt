@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
 import { PostService } from '../service/post.service';
 
@@ -11,7 +12,7 @@ export class ListaPostComponent implements OnInit {
 
   posts: Post[] = [];
 
-  constructor(private postService :PostService) { }
+  constructor(private postService: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -28,6 +29,26 @@ export class ListaPostComponent implements OnInit {
         console.log(err);
       }
     );
+
+  }
+
+  borrar(id: number){
+
+    this.postService.delete(id).subscribe(
+      data => {
+        this.toastr.success('Artículo eliminado', '', {
+          timeOut: 3000
+        });
+        this.cargarPosts();
+
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Error', {
+          timeOut: 3000
+        });
+      }
+    );
+
 
   }
 

@@ -15,6 +15,7 @@ import { LoginGuard } from './guards/login.guard';
 import { ListaPostComponent } from './post/lista-post.component';
 import { NuevoPostComponent } from './post/nuevo-post.component';
 import { FullPostComponent } from './post/full-post.component';
+import { EditarPostComponent } from './post/editar-post.component';
 
 
 
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'articulos', component: ListaPostComponent },
   { path: 'articulos/nuevo', component: NuevoPostComponent },
   { path: ':id', component: FullPostComponent },
+  { path: 'articulos/editar/:id', component: EditarPostComponent },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

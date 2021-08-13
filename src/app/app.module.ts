@@ -29,6 +29,7 @@ import { NuevoPostComponent } from './post/nuevo-post.component';
 import { EditarPostComponent } from './post/editar-post.component';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { FullPostComponent } from './post/full-post.component';
+import { bottom, right } from '@popperjs/core';
 
 
 // import * as bootstrap from "bootstrap";
@@ -59,12 +60,19 @@ registerLocaleData(localeEs, 'es');
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+    progressBar: true,
+    progressAnimation: 'increasing',
+    preventDuplicates: true,
+    positionClass: 'toast-bottom-right',
+    // closeButton: true
+    }),
     HttpClientModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    
 
   ],
   providers: [

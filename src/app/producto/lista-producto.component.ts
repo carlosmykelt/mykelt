@@ -81,15 +81,15 @@ export class ListaProductoComponent implements OnInit {
   borrar(id: number) {
     this.productoService.delete(id).subscribe(
       data => {
-        this.toastr.success('Producto eliminado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
+        this.toastr.success('Producto eliminado', '', {
+          timeOut: 3000
         });
         this.cargarProductos();
 
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
-          timeOut: 3000, positionClass: 'toast-top-center',
+          timeOut: 3000
         });
       }
     );

@@ -34,6 +34,12 @@
               <td>
                 <button class="btn btn-outline-dark" routerLink="/{{post.id}}">Ver artículo </button>
               </td>
+              <td>
+                <button class="btn btn-outline-dark" routerLink="editar/{{post.id}}">Editar </button>
+              </td>
+              <td>
+                <button class="btn btn-outline-dark" (click)="borrar(post.id)">Borrar </button>
+              </td>
             </tr>
               <!-- Ponemos div innerhtml para que renderice el html -->
               <!-- {{post.body}} -->
