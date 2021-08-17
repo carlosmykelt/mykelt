@@ -22,9 +22,22 @@
     <!-- col-lg-4 -->
     <!-- border rounded shadow-->
     <div class=" container col-lg-7 bg-white  my-5 py-4 px-3 ">
-        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+        <!-- onCreate() -->
+        <form (ngSubmit)="crea()" novalidate #f="ngForm">
 
 
+            <div class="form-group">
+                <!-- capturarFile($event) -->
+                
+                <input (change)="captura($event)" type="file">  
+                <!-- Change detecta cuando el input tiene un cambio.
+                Le ponemos la función capturar con el parámetro evento -->
+            </div>  
+
+            <div *ngIf="previsualizacion">
+                <img width="500px" [src]="previsualizacion" alt="">
+            </div>
+            
 
             <div class="form-group">
                 <!-- <label for="name">Nombre</label> -->
@@ -62,6 +75,8 @@
 
     </div>
 </div>
+
+
 <!-- 
 <button class="btn btn-danger" (click)="imprime()">Imprime</button>
 

@@ -8,10 +8,19 @@
 
 <div *ngIf="post" class="py-5">
   <div class="container col-lg-7 bg-white  my-5 py-4 px-3">
-    <div class="display-4 font-weight-bold mb-5">{{post.name}}</div>   
+    <!-- [ngStyle]="{ width : 200px; }" -->
+
+    <div class="display-4 font-weight-bold mb-5">{{post.name}}</div> 
+</div>
+
+<div class="mx-2">
+      <img [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid corner mx-auto d-block mb-5" >
+</div>
+
     <br>
 
+    <div class="container col-lg-7 bg-white  my-5 py-4 px-3">
       <div [innerHTML]="post.body"></div>
-
-  </div>
+    </div>
+  
 </div>

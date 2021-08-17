@@ -45,4 +45,19 @@ a:hover {
   border-radius: 5px !important;
 }
 
+.corner{
+  border-radius: 25px;
+  /* width : 900px; */
+}
+
+.cornerlista{
+  border-radius: 25px;
+  /* width : 500px;
+  height: 200px; */
+  max-width: 100%;
+}
+
+.cardstyle{
+  /* width: 500px; */
+}
 

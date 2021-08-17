@@ -8,7 +8,7 @@ import { Post } from '../models/post';
 })
 export class PostService {
 
-  constructor(private httpClient :HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
     postURL =  'http://127.0.0.1/api/posts';
 
@@ -18,13 +18,31 @@ export class PostService {
 
     }
 
-    
-    public save(post: Post): Observable<any>{
+    public image(id: number): Observable<any>{
 
-      return this.httpClient.post<any>(this.postURL, post);
-
+      return this.httpClient.get<any>(this.postURL + `/${id}/image`);
     }
 
+
+    
+
+    
+    // public save(post: Post): Observable<any>{
+
+    //   return this.httpClient.post<any>(this.postURL, post);
+
+    // }
+
+    public save(post: FormData): Observable<any>{
+
+      return this.httpClient.post<any>(this.postURL, post);
+    }
+
+    // public save(post: Post, image: string): Observable<any>{
+
+    //   return this.httpClient.post<any>(this.postURL, post);
+
+    // }
     public detail(id: number): Observable<Post>{
       return this.httpClient.get<Post>(this.postURL + `/${id}`);
     }
