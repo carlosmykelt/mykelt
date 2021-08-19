@@ -48,7 +48,14 @@
                 
                 <!-- <label class="my-4" for="body">Cuerpo del artículo</label> -->
                 <!-- class="form-control" -->
-                <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="body" name="body" ></ckeditor>
+
+                <!-- ESTE ES EL ANTERIOR, QUE ESTABA BIEN -->
+                <!-- <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="body" name="body" ></ckeditor> -->
+                <!-- ESTE ES EL ANTERIOR, QUE ESTABA BIEN -->
+
+                <ckeditor id="editor" [editor]="Editor" [config]='config' data="<p>Hello, world!</p>" [(ngModel)]="body" name="body"></ckeditor>
+
+
             </div> 
 
             <!-- <div class="form-group">

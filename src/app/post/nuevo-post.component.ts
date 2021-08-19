@@ -1,3 +1,4 @@
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { PostService } from './../service/post.service';
 import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
 import { post } from 'jquery';
@@ -5,19 +6,14 @@ import { Post } from '../models/post';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
-import { CKEditorComponent } from 'ckeditor4-angular';
+//import { CKEditorComponent, CKEditorModule } from 'ckeditor4-angular';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
+import * as customEditor from './../build/ckeditor';
 
 
-// ClassicEditor
-//     .create( document.querySelector( '#editor' ), {
-//         plugins: [ Base64UploadAdapter, ... ],
-//         toolbar: [ ... ]
-//     } )
-//     .then( ... )
-//     .catch( ... );
+
 
 
 @Component({
@@ -27,6 +23,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NuevoPostComponent implements OnInit {
 
+  public Editor = customEditor;
+  
   name = '';
   body = 'Escribe aquí el cuerpo del artículo';
 
@@ -36,24 +34,22 @@ export class NuevoPostComponent implements OnInit {
 
   portada: File = null;
 
-    // config.uiColor = '#F7B42C';
- 
-  
-  // editorData: '<p>Hello, world!</p>';
+  public config = {
+    // toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
 
+    // // This value must be kept in sync with the language defined in webpack.config.js.
+    // language: 'en'
+};
 
+  // @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
 
-
-  // ckeditorContent: string = 'probando';
-  @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
-
-  ngAfterViewChecked(){
-    let editor = this.ckEditor.instance;
-    editor.config.height = '200';
-    editor.config.toolbarGroups = [
-      { name: 'document', groups: ['mode', 'document', 'doctools']}
-    ]
-  }
+  // ngAfterViewChecked(){
+  //   let editor = this.ckEditor.instance;
+  //   editor.config.height = '200';
+  //   editor.config.toolbarGroups = [
+  //     { name: 'document', groups: ['mode', 'document', 'doctools']}
+  //   ]
+  // }
 
   constructor(private postService: PostService, private toastr: ToastrService,
     private router: Router, private sanitizer: DomSanitizer) {
@@ -64,7 +60,8 @@ export class NuevoPostComponent implements OnInit {
 
   ngOnInit() {
 
-    
+
+
   }
 
   // onCreate(): void{

@@ -22,7 +22,8 @@
             </div>
 
             <div class="form-group mt-5">
-                <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="post.body" name="body" ></ckeditor>
+                <ckeditor [editor]="Editor" [config]='config' data="<p>Hello, world!</p>" [(ngModel)]="post.body" name="body"></ckeditor>
+                <!-- <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="post.body" name="body" ></ckeditor> -->
             </div> 
         
             <div class="d-flex justify-content-around mt-5">

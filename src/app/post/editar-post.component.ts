@@ -6,12 +6,16 @@ import { PostService } from '../service/post.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
+import * as customEditor from './../build/ckeditor';
+
 @Component({
   selector: 'app-editar-post',
   templateUrl: './editar-post.component.html',
   styleUrls: ['./editar-post.component.css']
 })
 export class EditarPostComponent implements OnInit {
+
+  public Editor = customEditor;
 
   // Si no recuerdo mal, para los modelos del form, es necesario iniciarlas.
   name = '';
@@ -20,6 +24,13 @@ export class EditarPostComponent implements OnInit {
 
   public previsualizacion: string;
   portada: File = null;
+
+  public config = {
+    // toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
+
+    // // This value must be kept in sync with the language defined in webpack.config.js.
+    // language: 'en'
+};
 
 
   constructor(    private postService: PostService,
