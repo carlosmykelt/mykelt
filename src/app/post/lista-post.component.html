@@ -17,17 +17,22 @@
   <div class="container d-flex justify-content-around flex-wrap"> 
     <div class="col-lg-5" *ngFor="let post of posts">
 
-      <div class="card mb-5 cardstyle mx-0 p-5 corner shadow" >
+    <!-- <a routerLink="/{{post.id}}"> -->
+
+      <div class="card mb-5 cardstyle mx-0 my-0 px-4 pt-4 pb-0 corner shadow">
 
           <!-- {{post.image}}     intento con d-inline, miraré otro -->
-          <table class="table d-inline">
+          <table class="table table-borderless d-inline">
             <tr>
               <!-- <td> <img src="'http://localhost:4200/' + post.image"> </td> -->
-              <img [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid cornerlista mx-auto d-block" >
+              <a routerLink="/{{post.id}}">
+                <img [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid cornerlista mx-auto d-block" >
+              </a>
+
             </tr>
             <tr>
               <td>
-                <p class="h2">{{post.name}}</p>
+                <a class="h2" routerLink="/{{post.id}}">{{post.name}}</a>
               </td>
             </tr>
             <tr>
@@ -38,24 +43,23 @@
             </tr>
             <tr>
               <td>
-                <button class="btn btn-outline-dark" routerLink="/{{post.id}}">Ver artículo </button>
+                <button class="btn btn-dark btn-block corner mt-3" routerLink="/{{post.id}}">Ver artículo </button>
               </td>
             </tr>
             <tr>
               <td>
-                <button class="btn btn-outline-dark" routerLink="editar/{{post.id}}">Editar </button>
+                <button class="btn btn-outline-dark btn-sm corner" routerLink="editar/{{post.id}}">Editar </button>
+                &nbsp;
+                <button class="btn btn-outline-dark btn-sm corner" (click)="borrar(post.id)">Borrar </button>
               </td>  
             </tr>
-            <tr>
-              <td>
-                <button class="btn btn-outline-dark" (click)="borrar(post.id)">Borrar </button>
-              </td>
-            </tr>
+
               <!-- Ponemos div innerhtml para que renderice el html -->
               <!-- {{post.body}} -->
           </table>
         
       </div>
+    <!-- </a> -->
     </div>
   </div>
 <!-- 

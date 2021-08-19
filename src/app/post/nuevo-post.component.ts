@@ -9,6 +9,17 @@ import { CKEditorComponent } from 'ckeditor4-angular';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
+
+
+// ClassicEditor
+//     .create( document.querySelector( '#editor' ), {
+//         plugins: [ Base64UploadAdapter, ... ],
+//         toolbar: [ ... ]
+//     } )
+//     .then( ... )
+//     .catch( ... );
+
+
 @Component({
   selector: 'app-nuevo-post',
   templateUrl: './nuevo-post.component.html',
@@ -148,11 +159,6 @@ export class NuevoPostComponent implements OnInit {
              this.portada = archivoCapturado;
       //     this.archivos.push(archivoCapturado); // En el array creado, incluímos la imagen
 
-
-
-      
-
-
   }
 
   crea(): void{
@@ -162,12 +168,6 @@ export class NuevoPostComponent implements OnInit {
     fd.append('body', this.body);
     fd.append('image', this.portada);
 
-    console.log('llega a funcion crea')
-    console.log(this.portada)
- //   const post = new Post(this.name, this.body, fd);
-
-    console.log('aquí estaría creado')
-    console.log(post)
     this.postService.save(fd).subscribe(
       data => {
         this.toastr.success('Artículo creado', '', {
@@ -222,7 +222,7 @@ export class NuevoPostComponent implements OnInit {
     } catch (e) {
       return null;
     }
-  })
+  });
 
 
 }
