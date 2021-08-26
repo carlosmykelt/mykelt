@@ -32,12 +32,13 @@
             </tr>
             <tr>
               <td>
-                <a class="h2" routerLink="/{{post.id}}">{{post.name}}</a>
+                <div class="mt-3"> <a class="h2" routerLink="/{{post.id}}">{{post.name}}</a> </div>
               </td>
             </tr>
             <tr>
               <td>
-                Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien.
+               <div class="listheader"> {{post.header}} </div> 
+                <!-- Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien. -->
                 <!-- <div [innerHTML]="post.body"></div> -->
               </td>
             </tr>

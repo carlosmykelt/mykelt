@@ -32,6 +32,7 @@ import { FullPostComponent } from './post/full-post.component';
 import { bottom, right } from '@popperjs/core';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { SetupCardComponent } from './stripe/setup-card.component';
 
 
 
@@ -56,7 +57,8 @@ registerLocaleData(localeEs, 'es');
     ListaPostComponent,
     NuevoPostComponent,
     EditarPostComponent,
-    FullPostComponent
+    FullPostComponent,
+    SetupCardComponent
 
   ],
   imports: [

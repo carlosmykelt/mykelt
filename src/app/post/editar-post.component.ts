@@ -6,7 +6,9 @@ import { PostService } from '../service/post.service';
 
 import { DomSanitizer } from '@angular/platform-browser';
 
-import * as customEditor from './../build/ckeditor';
+import * as customEditor from './../build2/ckeditor';
+
+// import * as customEditor from './../ckCustomBuild/build/ckeditor';
 
 @Component({
   selector: 'app-editar-post',
@@ -19,6 +21,7 @@ export class EditarPostComponent implements OnInit {
 
   // Si no recuerdo mal, para los modelos del form, es necesario iniciarlas.
   name = '';
+  header = '';
   body = 'Escribe aquí el cuerpo del artículo';
   post: Post = null;
 
@@ -26,7 +29,12 @@ export class EditarPostComponent implements OnInit {
   portada: File = null;
 
   public config = {
-    // toolbar: [ 'heading', '|', 'bold', 'italic', 'custombutton' ],
+  //   alignment: {
+  //     options: [ 'left', 'center', 'right' ]
+  // },
+  //   toolbar: [ 'heading', '|', 'bold', 'italic', 'underline', 'Highlight', 'Link', 'Alignment',
+  // 'fontColor', 'Table', 'List', 'BlockQuote', 'Image', 'HtmlComment', 'ImageUpload', 'ImageToolbar', 'ImageStyle', 
+  // 'ImageCaption', 'custombutton' ],
 
     // // This value must be kept in sync with the language defined in webpack.config.js.
     // language: 'en'
@@ -44,8 +52,16 @@ export class EditarPostComponent implements OnInit {
       data => {
         this.post = data;
 
- 
         // this.cargando = false;
+
+        this.extraerBase64(data.image).then((imagen: any) => {
+          this.previsualizacion = imagen.base; // en esta variable almacenamos la codificación de la imagen, base64
+          console.log(imagen);
+        });
+
+        // const imgpostcap = <File>data.image;
+        // this.portada = <File>this.post.image;
+        
 
       },
       err => {
@@ -56,6 +72,7 @@ export class EditarPostComponent implements OnInit {
       }
     );
 
+
   }
 
   onUpdate(): void{
@@ -65,8 +82,17 @@ export class EditarPostComponent implements OnInit {
     const fd = new FormData();
     fd.append('id', id);
     fd.append('name', this.post.name);
+    fd.append('header', this.post.header);
     fd.append('body', this.post.body);
+
+    // if(this.previsualizacion){
     fd.append('image', this.portada);
+    // }
+//     else{
+//       this.portada = data.image;
+// fd.append('image', this.portada);
+//     }
+
   //  fd.append('_method', 'PUT');
 
     // console.log(fd.get('id'));

@@ -16,6 +16,7 @@ import { ListaPostComponent } from './post/lista-post.component';
 import { NuevoPostComponent } from './post/nuevo-post.component';
 import { FullPostComponent } from './post/full-post.component';
 import { EditarPostComponent } from './post/editar-post.component';
+import { SetupCardComponent } from './stripe/setup-card.component';
 
 
 
@@ -30,11 +31,15 @@ const routes: Routes = [
 
   { path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
   { path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
-
+  
+  { path: 'setupcard', component: SetupCardComponent },
+  
   { path: 'articulos', component: ListaPostComponent },
   { path: 'articulos/nuevo', component: NuevoPostComponent },
   { path: ':id', component: FullPostComponent },
   { path: 'articulos/editar/:id', component: EditarPostComponent },
+
+
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

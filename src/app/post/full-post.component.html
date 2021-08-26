@@ -10,7 +10,9 @@
   <div class="container col-lg-7 bg-white  my-5 py-4 px-3">
     <!-- [ngStyle]="{ width : 200px; }" -->
 
-    <div class="display-4 font-weight-bold mb-5">{{post.name}}</div> 
+    <div class="display-3 font-weight-bold mb-5 col-lg-10 mx-auto" >{{post.name}}</div> 
+
+    <div class="mb-2 p-5 display-5 col-lg-11 mx-auto bgheader">{{post.header}}</div> 
 </div>
 
 <div class="mx-2">
@@ -19,8 +21,8 @@
 
     <br>
 
-    <div class="container col-lg-7 bg-white  my-5 py-4 px-3">
-      <div [innerHTML]="post.body"></div>
+    <div class="container col-lg-7  my-5 py-4 px-3">
+      <div class="fontbody" [innerHTML]="post.body"></div>
     </div>
   
 </div>

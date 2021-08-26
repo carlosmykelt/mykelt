@@ -13,12 +13,21 @@
                 Le ponemos la función capturar con el parámetro evento -->
             </div>  
 
-            <div *ngIf="previsualizacion">
+
+            <div *ngIf="previsualizacion; else imgpost">
                 <img width="500px" [src]="previsualizacion" alt="">
             </div>
+
+            <ng-template #imgpost>
+                <img width="500px"  [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid cornerlista mx-auto d-block"  alt="">
+            </ng-template>
             
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="name" [(ngModel)]="post.name" required placeholder="Escribe aquí el nombre">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="header" name="header" [(ngModel)]="post.header" required placeholder="Escribe aquí el header">
             </div>
 
             <div class="form-group mt-5">

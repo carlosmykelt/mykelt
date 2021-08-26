@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.13",
     "@ckeditor/ckeditor5-angular": "^2.0.2",
     "@ckeditor/ckeditor5-build-classic": "^29.1.0",
+    "@ckeditor/ckeditor5-font": "^29.1.0",
     "@ckeditor/ckeditor5-upload": "^29.1.0",
     "@popperjs/core": "^2.8.6",
     "acorn-dynamic-import": "^4.0.0",

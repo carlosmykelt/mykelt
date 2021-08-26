@@ -67,3 +67,24 @@ a:hover {
   bottom: 3px;
 }
 
+.listheader{
+  color: #58667e;
+}
+
+.bgheader{
+  background: #f8fafd;
+  /* background: rgb(40,207,246);
+  background: linear-gradient(180deg, rgba(40,207,246,0.05085784313725494) 100%, rgba(250,249,250,1) 100%); */
+  font-size: 130%;
+
+  border-left: 6px solid #23f5c3;
+
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.fontbody{
+  font-size: 130%;
+  /* font-family: 'Inter', sans-serif; */
+}
+
