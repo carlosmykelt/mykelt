@@ -17,6 +17,7 @@ import { NuevoPostComponent } from './post/nuevo-post.component';
 import { FullPostComponent } from './post/full-post.component';
 import { EditarPostComponent } from './post/editar-post.component';
 import { SetupCardComponent } from './stripe/setup-card.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -26,13 +27,17 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
 
-  { path: 'lista', component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
-  { path: 'detalle/:id', component: DetalleProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+  { path: 'productos', component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+  { path: 'productos/:id', component: DetalleProductoComponent},
+  // , canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } 
+  
 
-  { path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
-  { path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+  // { path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+  // { path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
   
   { path: 'setupcard', component: SetupCardComponent },
+
+  { path: 'cart', component: CartComponent },
   
   { path: 'articulos', component: ListaPostComponent },
   { path: 'articulos/nuevo', component: NuevoPostComponent },

@@ -1,0 +1,105 @@
+<app-menu></app-menu>
+
+<div class="mb-5">
+  <br>
+</div>
+
+<div class="container d-flex justify-content-center my-5 pb-4">
+  <p class="h3 font-weight-bold"> Cesta </p>
+</div>
+
+<!-- Si aún no se ha cargado, muestra el spinner -->
+<div *ngIf="cargado==false" class="text-center my-5">
+  <div class="spinner-border" role="status"></div>
+</div>
+
+<!-- Si ya se ha cargado, muestra el div -->
+<div *ngIf="cargado==true">
+  <div class="container d-flex justify-content-around flex-wrap">
+    <!-- cartProducts es el que contiene lo que necesitamos para la vista -->
+    <div class="col-lg-5" *ngFor="let cartProduct of cartProducts">
+
+      <div class="card mb-5 cardstyle mx-0 my-0 px-4 pt-4 pb-0 corner shadow">
+
+        <table class="table table-borderless d-inline">
+
+          <tr class="container d-flex justify-content-center">
+            <a routerLink="/productos/{{cartProduct.id}}">
+              <img [src]="cartProduct.images" class="img-fluid cornerlista mx-auto d-block">
+            </a>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="mt-3"> <a class="h2" routerLink="/productos/{{cartProduct.id}}">{{cartProduct.name}}</a>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div class="listheader"> {{cartProduct.metadata.price}} €</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+
+              <a class=" mx-0 px-0 pointer text-dark" (click)="resta(cartProduct.id, cartProduct.quantity)">
+                <i class="fas fa-minus-circle fa-lg"></i>
+              </a>
+              {{cartProduct.quantity}}
+
+              <a class=" mx-0 px-0 pointer text-dark" (click)="suma(cartProduct.id, cartProduct.quantity)">
+                <i class="fas fa-plus-circle fa-lg"></i>
+              </a>
+
+              &nbsp; &nbsp;
+              <a class="mx-0 px-0 pointer text-dark" (click)="borrar(cartProduct.id)">
+                <i class="far fa-trash-alt fa-lg"></i>
+              </a>
+            </td>
+          </tr>
+
+          <!-- <div class="form-group mt-5">
+          <input type="number" class="form-control" name="quantity" placeholder="cantidad" [(ngModel)]="quantity">
+        </div> -->
+          <!-- <tr>
+          <td>
+            <button class="btn btn-dark btn-block corner mt-3" routerLink="/{{producto.id}}">Ver artículo </button>
+          </td>
+        </tr> -->
+
+          <!-- <button class="btn btn-outline-dark btn-sm corner" routerLink="editar/{{producto.id}}">Editar </button>
+              &nbsp; -->
+
+
+
+          <!-- Ponemos div innerhtml para que renderice el html -->
+          <!-- {{post.body}} -->
+
+          <!-- <tr>
+          <td> -->
+          <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+          <!-- En vez de priceId(producto.id) le ponemos para que añada a carrito -->
+          <!-- producto.id es el id del producto -->
+          <!-- falta el quantity -->
+          <!-- <button class="btn btn-primary" (click)="addCart(producto.id, quantity)"> Añadir a carrito </button>  -->
+          <!-- </td>
+        </tr> -->
+        </table>
+
+
+      </div>
+      <!-- </a> -->
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary m-5" (click)="pagar()">
+    COMPRAR
+  </button>
+
+</div>
+<!--cierra el ngif de cargado -->

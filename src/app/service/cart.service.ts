@@ -1,0 +1,38 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Cart } from '../models/cart';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartService {
+
+  constructor(private httpClient: HttpClient) { }
+
+  cartURL =  'http://127.0.0.1/api/cart';
+
+  public lista(): Observable<Cart[]>{
+
+    return this.httpClient.get<Cart[]>(this.cartURL);
+  }
+  
+  public save(cart: Cart): Observable<any>{
+
+    return this.httpClient.post<any>(this.cartURL, cart);
+  }
+
+  public detail(id: number): Observable<Cart>{
+    return this.httpClient.get<Cart>(this.cartURL + `/${id}`);
+  }
+
+  public update(id: number, cart: Cart): Observable<any>{
+    return this.httpClient.put<any>(this.cartURL + `/${id}`, cart);
+  }
+
+
+  public delete(id: number): Observable<any>{
+    return this.httpClient.delete<any>(this.cartURL + `/${id}`);
+  }
+
+}

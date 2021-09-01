@@ -3,6 +3,10 @@ html {
   font-family: 'Lato', sans-serif;
 }
 
+/* Fondo gris */
+body{
+  background-color: #fafbfe;
+}
 
 
 a {
@@ -35,6 +39,11 @@ a:hover {
   color: white;
 }
 
+
+
+.pointer:hover{
+  cursor: pointer;
+}
 
 
 #toast-container > .toast-success {

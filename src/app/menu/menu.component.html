@@ -9,13 +9,21 @@
     <ul class="navbar-nav ml-auto text-center my-4 my-sm-2">
 
       <li class="nav-item">
-        <a class="p-3 menulink" routerLink="/lista">
+        <a class="p-3 menulink" routerLink="/productos">
           <div class="btn menulink my-2">Productos</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="p-3 menulink" routerLink="/articulos">
           <div class="btn menulink my-2">Artículos</div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class=" p-3" routerLink="/cart">
+        <div class="btn menulink my-2"> 
+          <i class="fas fa-shopping-cart"></i>    
+          Cesta
+        </div>
         </a>
       </li>
       <li class="nav-item" *ngIf="!isLogged">

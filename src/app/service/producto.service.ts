@@ -21,8 +21,8 @@ export class ProductoService {
     return this.httpClient.get<any>(this.productoURL + `/price/${priceId}`);
   }
 
-  public detail(id: number): Observable<Producto> {
-    return this.httpClient.get<Producto>(this.productoURL + `/${id}`);
+  public detail(id: string): Observable<any> {
+    return this.httpClient.get<any>(this.productoURL + `/${id}`);
   }
 
   public card(): Observable<any> {

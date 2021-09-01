@@ -33,6 +33,7 @@ import { bottom, right } from '@popperjs/core';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { SetupCardComponent } from './stripe/setup-card.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -58,7 +59,8 @@ registerLocaleData(localeEs, 'es');
     NuevoPostComponent,
     EditarPostComponent,
     FullPostComponent,
-    SetupCardComponent
+    SetupCardComponent,
+    CartComponent
 
   ],
   imports: [
