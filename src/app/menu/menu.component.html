@@ -1,47 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-light  bg-white mx-lg-5">
+<div class="container" >
 
-  <a class="navbar-brand my-sm-2" href="#"> Lista de productos </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="navbarNav">
-    <ul class="navbar-nav ml-auto text-center my-4 my-sm-2">
+  <nav class="navbar navbar-expand-lg navbar-light  mx-lg-5 border-bottom" [style.max-width.px]="2000">
 
-      <li class="nav-item">
-        <a class="p-3 menulink" routerLink="/productos">
-          <div class="btn menulink my-2">Productos</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="p-3 menulink" routerLink="/articulos">
-          <div class="btn menulink my-2">Artículos</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class=" p-3" routerLink="/cart">
-        <div class="btn menulink my-2"> 
-          <i class="fas fa-shopping-cart"></i>    
-          Cesta
-        </div>
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class=" p-3" routerLink="/login">
-          <div class="btn menulink my-2">Iniciar Sesión</div>
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="!isLogged">
-        <a class="p-3 menulink" routerLink="/registro">
-          <div class="btn  boton shadow my-2">Registrarse </div>
-        </a>
-      </li>
-      <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-        <a class="p-3 menulink">
-          <div class="btn boton shadow my-2"><i class="fas fa-power-off"></i> Cerrar Sesión</div>
-        </a>
-      </li>
-    </ul>
-  </div>
+   
+          <a class="menulink my-sm-2 bold600" href="#"> MYKEZT </a>
+  
 
-</nav>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ml-auto text-center my-4 my-sm-2">
+
+        <li class="nav-item">
+          <a class="p-3 menulink" routerLink="/articulos">
+            <div class="btn menulink my-2 bold600">Artículos</div>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="p-3 menulink" routerLink="/productos">
+            <div class="btn menulink my-2 bold600">Productos</div>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class=" p-3" routerLink="/cart">
+            <div class="btn menulink my-2 bold600">
+              <i class="fas fa-shopping-cart"></i>
+              Cesta
+            </div>
+          </a>
+        </li>
+        <!-- !isLogged -->
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class=" p-3" routerLink="/login">
+            <div class="btn menulink my-2 bold600">Iniciar Sesión</div>
+          </a>
+        </li>
+        <!-- !isLogged -->
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="p-3 menulink" routerLink="/registro">
+            <!-- boton -->
+            <div class="btn btn-dark py-2 px-4 shadow my-2 corner bold600">Registrarse </div>
+          </a>
+        </li>
+        <!-- isLogged -->
+        <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+          <a class="p-3 menulink">
+            <div class="btn btn-dark py-2 px-4 shadow my-2 corner bold600"><i class="fas fa-power-off"></i>&nbsp;Cerrar Sesión</div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+
+</div>

@@ -20,7 +20,7 @@ export class ProdGuardService implements CanActivate { // Implementamos canactiv
     // está el rol real (el que tengo) y el esperado, es decir, el que espero tener
     // mi expectativa es ser administrador pero me quedo en un mero usuario
 
-    this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';
+    this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';  // Si es true, devuelve admin. Si es false, devuelve user
 
     if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
 

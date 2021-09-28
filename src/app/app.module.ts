@@ -34,9 +34,9 @@ import { bottom, right } from '@popperjs/core';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { SetupCardComponent } from './stripe/setup-card.component';
 import { CartComponent } from './cart/cart.component';
-
-
-
+import { ResetPasswordComponent } from './reset/reset-password.component';
+import { ResetFormComponent } from './reset/reset-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 // import * as bootstrap from "bootstrap";
 // import * as $ from "jquery";
@@ -60,7 +60,10 @@ registerLocaleData(localeEs, 'es');
     EditarPostComponent,
     FullPostComponent,
     SetupCardComponent,
-    CartComponent
+    CartComponent,
+    ResetPasswordComponent,
+    ResetFormComponent,
+    FooterComponent
 
   ],
   imports: [
@@ -86,7 +89,6 @@ registerLocaleData(localeEs, 'es');
     DecimalPipe, //Para poner decimales con el sistema europeo
 
     { provide: LOCALE_ID, useValue: 'es' },  // El de España
-
 
   ],
   bootstrap: [AppComponent]

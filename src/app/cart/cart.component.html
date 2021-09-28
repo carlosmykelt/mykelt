@@ -1,21 +1,57 @@
 <app-menu></app-menu>
 
-<div class="mb-5">
-  <br>
-</div>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color: rgb(238, 182, 51);"></stop>
+      <stop offset="100%" style="stop-color: rgb(255, 255, 255);"></stop>
+    </linearGradient>
+  </defs>
+  <path id="blob" d="M429,337Q389,424,293,453Q197,482,120,416Q43,350,37,247.5Q31,145,116.5,93Q202,41,300.5,52Q399,63,434,156.5Q469,250,429,337Z" fill="url(#gradient)"></path>
+</svg>
 
-<div class="container d-flex justify-content-center my-5 pb-4">
-  <p class="h3 font-weight-bold"> Cesta </p>
-</div>
+<div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border rounded shadow-lg py-5 px-md-5">
+      <div class="container d-flex justify-content-center my-5">
+        <p class="h1 font-weight-bold"> Cesta </p>
+      </div>
 
-<!-- Si aún no se ha cargado, muestra el spinner -->
-<div *ngIf="cargado==false" class="text-center my-5">
-  <div class="spinner-border" role="status"></div>
+      <div class="container d-flex justify-content-center" *ngIf="!isLogged">
+
+        <div class="d-flex flex-column">
+          <div class="h2 text-center mb-3">
+            <p>
+              Inicia sesión para ver el carrito
+            </p>
+          </div>
+          <div class="text-center" >
+            <button class="btn btn-dark corner" routerLink="/login">
+              Inicia sesión para añadir a la cesta
+            </button>
+          </div>
+        </div>
+
+      </div>
 </div>
+<!--
 
 <!-- Si ya se ha cargado, muestra el div -->
 <div *ngIf="cargado==true">
-  <div class="container d-flex justify-content-around flex-wrap">
+
+  <div class="container col-lg-5   my-5 ">
+    <div class="card corner bg-white shadow d-flex flex-column p-sm-5 p-4">
+      <div class="mb-5 h2">
+        <!-- Utilizamos DecimalPipe que viene integrado en Angular por defecto -->
+            Total: {{PrecioTotal | number:'1.2-2':'es'}} euros.
+      </div>
+      <div>
+        <button class="btn btn-dark corner btn-block" (click)="pagar()">
+        COMPRAR
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-around flex-wrap pt-3">
     <!-- cartProducts es el que contiene lo que necesitamos para la vista -->
     <div class="col-lg-5" *ngFor="let cartProduct of cartProducts">
 
@@ -38,16 +74,16 @@
 
           <tr>
             <td>
-              <div class="listheader"> {{cartProduct.metadata.price}} €</div>
+              <div class="listheader"> {{cartProduct.metadata.price | number:'1.2-2':'es'}} €</div>
             </td>
           </tr>
 
           <tr>
             <td>
 
-              <a class=" mx-0 px-0 pointer text-dark" (click)="resta(cartProduct.id, cartProduct.quantity)">
+              <button class=" mx-0 px-0 pointer text-dark remove" (click)="resta(cartProduct.id, cartProduct.quantity)"  [disabled]="cartProduct.quantity<2">
                 <i class="fas fa-minus-circle fa-lg"></i>
-              </a>
+              </button>
               {{cartProduct.quantity}}
 
               <a class=" mx-0 px-0 pointer text-dark" (click)="suma(cartProduct.id, cartProduct.quantity)">
@@ -55,7 +91,7 @@
               </a>
 
               &nbsp; &nbsp;
-              <a class="mx-0 px-0 pointer text-dark" (click)="borrar(cartProduct.id)">
+              <a class="mx-0 px-0 pointer text-dark" (click)="borrar(cartProduct.idDB)">
                 <i class="far fa-trash-alt fa-lg"></i>
               </a>
             </td>
@@ -96,10 +132,6 @@
     </div>
 
   </div>
-
-  <button class="btn btn-primary m-5" (click)="pagar()">
-    COMPRAR
-  </button>
 
 </div>
 <!--cierra el ngif de cargado -->

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Producto } from '../models/producto';
 import { CartService } from '../service/cart.service';
+import { TokenService } from '../service/token.service';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -25,19 +26,22 @@ export class DetalleProductoComponent implements OnInit {
 
   cargando: boolean = true;
 
-
+  isLogged = false;  // variable de si está logueado
 
   constructor(
     private cartService: CartService,
     private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) {
 
   }
 
   ngOnInit() {
+
+    this.isLogged = this.tokenService.isLogged();
 
     const id = this.activatedRoute.snapshot.params.id;
 

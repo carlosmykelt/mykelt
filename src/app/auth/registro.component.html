@@ -1,23 +1,55 @@
 <app-menu></app-menu>
 
-<div class="container mb-5 text-center h1 mt-5">
+<div class="container text-center h1 my-5 pt-5">
   Inicia sesión o crea una cuenta con tu correo 
 </div>
 
-  <div class="container mb-5 d-flex justify-content-center">
-    <div class="card col-lg-5 mt-5 mx-0 px-0">
-      <div class="card-header ">
+  <div class="container mb-5 pb-5 d-flex justify-content-center">
+    <div class="col-lg-5 mt-5 mx-0 px-0 bg-white border corner">
+      <div class="lightgrey bordertop p-3">
         <ul class="nav nav-tabs justify-content-center">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+            <a class="nav-link bold600" routerLink="/login">Iniciar Sesión</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/registro">Crear Cuenta</a>
+            <a class="nav-link active bold600" routerLink="/registro">Crear Cuenta</a>
           </li>
 
         </ul>
       </div>
-      <div class="card-body">
+      <div class=" my-4 mx-md-3 px-3 pb-3">
+
+     
+          <div class="mb-3">
+              <a href="http://127.0.0.1/login-google" class="btn greybuttom btn-block">
+
+                  <div class="d-flex bd-highlight p-1">
+                      <div class="flex-shrink-1 bd-highlight">
+                          <img src="assets/imgs/Google-min.png" style="max-width: 20px;">
+                      </div>
+                      <div class="w-100 bd-highlight align-self-center">
+                          Inicia sesión con Google
+                      </div>
+                  </div>
+
+              </a>
+          </div>
+          <div>
+              <a href="http://localhost/login-facebook" class="btn greybuttom btn-block">
+
+                  <div class="d-flex bd-highlight p-1">
+                      <div class="flex-shrink-1 bd-highlight">
+                          <img src="assets/imgs/Facebook-min.png" style="max-width: 20px;">
+                      </div>
+                      <div class="w-100 bd-highlight align-self-center">
+                          Inicia sesión con Facebook
+                      </div>
+                  </div>
+
+              </a>
+          </div>
+          <hr class="mt-4 mb-3">
+
         <!-- formulario de login -->
         <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
 
@@ -46,7 +78,7 @@
               <div class="spinner-border" role="status">                
               </div> 
             </div>
-            <button class="btn boton shadow btn-block" [disabled]="!f.valid">
+            <button class="btn btn-dark corner shadow btn-block remove" [disabled]="!f.valid">
               <i class="fas fa-sign-in-alt"></i> Crear Cuenta</button>
           </div>
         </form>
@@ -54,3 +86,4 @@
     </div>
   </div>
 
+  <app-footer></app-footer>

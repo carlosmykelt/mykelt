@@ -1,105 +1,105 @@
+
 <app-menu></app-menu>
 
-<div class="mb-5">
-  <br>
-</div>
-
-<div class="container">
-
-  <span class="h1 font-weight-bold">Productos </span>
-
-  <div class="form-group mt-5">
-    <input type="text" class="form-control" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
+  <div class="mb-5">
+    <br>
   </div>
 
-  <!-- Si aún no se ha cargado, muestra el spinner -->
-  <div *ngIf="cargado==false" class="text-center my-5"> 
-    <div class="spinner-border" role="status"></div> 
-</div>
+  <div class="container ">
 
-  <!-- Si ya se ha cargado, muestra el div -->
-  <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
-    <div class="col-lg-5  d-flex justify-content-center" *ngFor="let producto of productos">
+    <span class="h1 font-weight-bold">Productos </span>
 
-      <!-- <a routerLink="/{{post.id}}"> -->
-
-      <div class="card mb-5 cardstyle mx-0 my-0 px-4 pt-3 pb-4 corner shadow" [style.max-width.px]="400">
-
-        <!-- {{post.image}}     intento con d-inline, miraré otro -->
-        <!-- <table class="table table-borderless d-inline"> -->
-          <!-- <tr class="container d-flex justify-content-center"> -->
-            <div class="container d-flex justify-content-center">
-            <!--  <img src="'http://localhost:4200/' + post.image">  -->
-            <!-- <a routerLink="/{{post.id}}"> -->
-              <a routerLink="/productos/{{producto.id}}">
-                  <img [src]="producto.images" class="img-fluid cornerlista mx-auto d-block" >
-              </a>
-
-            </div>
-          <!-- </tr>
-
-          <tr>
-            <td> -->
-              <div class="mt-3 "> <a class="h5" routerLink="/productos/{{producto.id}}">{{producto.name}}</a> </div>
-              <div class="listheader"> {{producto.metadata.price}} € </div>
-            <!-- </td>
-          </tr> -->
-
-   
-              <!-- Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien. -->
-              <!-- <div [innerHTML]="post.body"></div> -->
-    
-          <!-- <div class="form-group mt-5">
-            <input type="number" class="form-control" name="quantity" placeholder="cantidad" [(ngModel)]="quantity">
-          </div> -->
-          <!-- <tr>
-            <td>
-              <button class="btn btn-dark btn-block corner mt-3" routerLink="/{{producto.id}}">Ver artículo </button>
-            </td>
-          </tr> -->
-          <!--  <tr>
-              <td>
-                <button class="btn btn-outline-dark btn-sm corner" routerLink="editar/{{producto.id}}">Editar </button>
-                &nbsp;
-                <button class="btn btn-outline-dark btn-sm corner" (click)="borrar(producto.id)">Borrar </button>
-              </td>  
-            </tr> -->
-
-          <!-- Ponemos div innerhtml para que renderice el html -->
-          <!-- {{post.body}} -->
-
-          <!-- <tr>
-            <td> -->
-              <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-
-              <!-- En vez de priceId(producto.id) le ponemos para que añada a carrito -->
-              <!-- producto.id es el id del producto -->
-              <!-- falta el quantity -->
-                    <!-- <button class="btn btn-primary" (click)="addCart(producto.id, quantity)"> Añadir a carrito </button>  -->
-            <!-- </td>
-          </tr> -->
-        <!-- </table> -->
-
- 
-
-      </div>
-      <!-- </a> -->
+    <div class="form-group my-5">
+      <input type="text" class="form-control" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
     </div>
+
+    <!-- Si aún no se ha cargado, muestra el spinner -->
+    <div *ngIf="cargado==false" class="text-center my-5"> 
+      <div class="spinner-border" role="status"></div> 
   </div>
 
+    <!-- Si ya se ha cargado, muestra el div -->
+    <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
+      <div class="col-lg-5  d-flex justify-content-center mt-5" *ngFor="let producto of productos">
 
-</div>
+        <!-- <a routerLink="/{{post.id}}"> -->
+
+        <div class="card mb-5 cardstyle mx-0 my-0 p-4 p-sm-5  pb-5 corner shadow" [style.max-width.px]="400">
+
+          <!-- {{post.image}}     intento con d-inline, miraré otro -->
+          <!-- <table class="table table-borderless d-inline"> -->
+            <!-- <tr class="container d-flex justify-content-center"> -->
+              <div class="container d-flex justify-content-center">
+              <!--  <img src="'http://localhost:4200/' + post.image">  -->
+              <!-- <a routerLink="/{{post.id}}"> -->
+                <a routerLink="/productos/{{producto.id}}">
+                    <img [src]="producto.images" class="img-fluid cornerlista mx-auto d-block" >
+                </a>
+
+              </div>
+            <!-- </tr>
+
+            <tr>
+              <td> -->
+                <div class="mt-3 "> <a class="h5" routerLink="/productos/{{producto.id}}">{{producto.name}}</a> </div>
+                <div class="listheader"> {{producto.metadata.price}} € </div>
+              <!-- </td>
+            </tr> -->
+    
+                <!-- Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien. -->
+                <!-- <div [innerHTML]="post.body"></div> -->
+      
+            <!-- <div class="form-group mt-5">
+              <input type="number" class="form-control" name="quantity" placeholder="cantidad" [(ngModel)]="quantity">
+            </div> -->
+            <!-- <tr>
+              <td>
+                <button class="btn btn-dark btn-block corner mt-3" routerLink="/{{producto.id}}">Ver artículo </button>
+              </td>
+            </tr> -->
+            <!--  <tr>
+                <td>
+                  <button class="btn btn-outline-dark btn-sm corner" routerLink="editar/{{producto.id}}">Editar </button>
+                  &nbsp;
+                  <button class="btn btn-outline-dark btn-sm corner" (click)="borrar(producto.id)">Borrar </button>
+                </td>  
+              </tr> -->
+
+            <!-- Ponemos div innerhtml para que renderice el html -->
+            <!-- {{post.body}} -->
+
+            <!-- <tr>
+              <td> -->
+                <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+                <!-- En vez de priceId(producto.id) le ponemos para que añada a carrito -->
+                <!-- producto.id es el id del producto -->
+                <!-- falta el quantity -->
+                      <!-- <button class="btn btn-primary" (click)="addCart(producto.id, quantity)"> Añadir a carrito </button>  -->
+              <!-- </td>
+            </tr> -->
+          <!-- </table> -->
+
+        </div>
+        <!-- </a> -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Load Stripe.js on your website. -->
+  <script src="https://js.stripe.com/v3"></script>
+
+  <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding.
+  <button
+    style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;cursor:pointer"
+    id="checkout-button-price_1JRykpEDzo7bolN0pL6nAUjv" role="link" type="button">
+    Checkout
+  </button> -->
+
+  <div id="error-message"></div>
+
+  <app-footer></app-footer>
 
 
 
-<!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
-
-<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding.
-<button
-  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em;cursor:pointer"
-  id="checkout-button-price_1JRykpEDzo7bolN0pL6nAUjv" role="link" type="button">
-  Checkout
-</button> -->
-
-<div id="error-message"></div>

@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginUsuario).subscribe( //loginusuario y nos suscribimos
       data => { // hacemos un callback
         this.tokenService.setToken(data.token);
-        console.log(data.user);
+
+        window.localStorage.UserName  = data.name; 
+
         this.router.navigate(['/']);  // lo mandamos al index
 
         this.cargandoLogin = false;     

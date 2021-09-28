@@ -27,7 +27,8 @@ a:hover {
 
 .menulink:hover {
   text-decoration: none;
-  color: #00a49e;
+  /* color: #00a49e; */
+  color: #eeb633;
 }
 
 .boton {
@@ -97,3 +98,48 @@ a:hover {
   /* font-family: 'Inter', sans-serif; */
 }
 
+/* Botones para el login social */
+.greybuttom{
+  background: #f2f3f5;
+  font-weight: 600;
+  /* color: #f2f3f5; */
+}
+
+.greybuttom:hover{
+  background: #DCDCDC;
+  /* color: #f2f3f5; */
+}
+
+.lightgrey{
+  background: #f2f3f5;
+}
+
+.bordertop{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.bold600{
+  font-weight: 600;
+}
+
+/* .cta{
+  border-radius: 25px;
+  background-color: #12141d;
+} */
+
+#blobSvg{
+
+  position: absolute;
+
+}
+
+.remove{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

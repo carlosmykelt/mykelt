@@ -10,7 +10,6 @@ export class ProdInterceptorService implements HttpInterceptor { // Implementa e
 
   constructor(private tokenService: TokenService) { } // Inyectamos el tokenservice
 
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let intReq = req; // Es req interceptado, por eso el int

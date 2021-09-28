@@ -10,10 +10,15 @@ export class MenuComponent implements OnInit {
 
   isLogged = false;  // variable de si está logueado
 
-  constructor(private tokenService: TokenService) { }  // le inyectamos un tokenservice
+  nombreUsuario: string;
+
+  constructor(private tokenService: TokenService) {
+
+   }  // le inyectamos un tokenservice
 
   ngOnInit() {
     this.isLogged = this.tokenService.isLogged();
+  
   }
 
   onLogOut(): void { // Accedes a través del html, para el logout

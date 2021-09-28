@@ -33,7 +33,7 @@
   <!-- Si ya se ha cargado, muestra el div -->
 <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
   <div class="col-lg-5">
-    <div class="card mb-5 cardstyle mx-0 my-0 px-4 pt-4 pb-0 corner shadow">
+    <div class="card mb-5 cardstyle mx-0 my-0 p-4 p-sm-5 pb-0 corner shadow">
 
       <table class="table table-borderless d-inline">
 
@@ -74,14 +74,24 @@
           </td>
         </tr>
 
+        <tr *ngIf="!isLogged">
+           <td>
+              <button class="btn btn-dark corner" routerLink="/login"> Inicia sesión para añadir a la cesta </button>
+           </td>       
+        </tr>
 
-        <tr>
+
+        <tr *ngIf="isLogged">
           <td>
             <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
 
             <!-- En vez de priceId(producto.id) le ponemos para que añada a carrito -->
             <!-- producto.id es el id del producto -->
             <!-- falta el quantity -->
+
+             
+
+             
             <button class="btn btn-dark corner" (click)="addCart(producto.id, quantity)"> Añadir a la cesta </button>
           </td>
         </tr>
@@ -92,3 +102,5 @@
 
   </div>
 </div>
+
+<app-footer></app-footer>

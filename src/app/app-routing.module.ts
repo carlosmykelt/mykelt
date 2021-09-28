@@ -18,6 +18,8 @@ import { FullPostComponent } from './post/full-post.component';
 import { EditarPostComponent } from './post/editar-post.component';
 import { SetupCardComponent } from './stripe/setup-card.component';
 import { CartComponent } from './cart/cart.component';
+import { ResetPasswordComponent } from './reset/reset-password.component';
+import { ResetFormComponent } from './reset/reset-form.component';
 
 
 
@@ -27,7 +29,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'registro', component: RegistroComponent, canActivate: [LoginGuard] },
 
-  { path: 'productos', component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
+  { path: 'restablecer', component: ResetPasswordComponent },
+  { path: 'formulario-restablecer', component: ResetFormComponent },
+
+
+  // component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }
+
+  { path: 'productos', component: ListaProductoComponent },
   { path: 'productos/:id', component: DetalleProductoComponent},
   // , canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } 
   
