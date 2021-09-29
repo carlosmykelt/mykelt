@@ -48,9 +48,10 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   
   { path: 'articulos', component: ListaPostComponent },
-  { path: 'articulos/nuevo', component: NuevoPostComponent },
   { path: ':id', component: FullPostComponent },
-  { path: 'articulos/editar/:id', component: EditarPostComponent },
+
+  { path: 'articulos/nuevo', component: NuevoPostComponent, canActivate: [ProdGuardService] },
+  { path: 'articulos/editar/:id', component: EditarPostComponent, canActivate: [ProdGuardService] },
 
 
 

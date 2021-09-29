@@ -52,6 +52,10 @@ export class LoginComponent implements OnInit {
 
         window.localStorage.UserName  = data.name; 
 
+        window.localStorage.role = data.role;
+        console.log('imprimimos el rol para comprobar')
+        console.log(data.role)
+
         this.router.navigate(['/']);  // lo mandamos al index
 
         this.cargandoLogin = false;     

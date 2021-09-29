@@ -20,6 +20,8 @@ export class IndexComponent implements OnInit {
 
   tokenoauth: string;
 
+  mitoken:string;
+
   constructor(private tokenService: TokenService, private activatedRoute: ActivatedRoute) {
 
   }
@@ -49,7 +51,29 @@ export class IndexComponent implements OnInit {
 
       this.tokenoauth = params.token;
 
+      window.localStorage.role = 0;
+
       this.tokenService.setToken(this.tokenoauth);
+
+      //------ prueba
+
+    //   this.mitoken = this.tokenService.getToken();
+    //   const payload = this.mitoken.split('.')[1];
+    // //split convierte un array a partir de un caracter, le ponemos posición 1 para acceder al payload
+    // const payloadDecoded = atob(payload);
+    // console.log(payloadDecoded)
+    // const values = JSON.parse(payloadDecoded); // parseamos a JSON
+    // console.log('valores: ')
+    // console.log(values)
+    // const username = values.sub;
+
+    //otra opción
+    //Ver details of user
+    //si is_admin es tru, es admin
+
+      //--------------
+
+
 
       this.userName = params.name;
 
@@ -70,6 +94,18 @@ export class IndexComponent implements OnInit {
   }
 
   infoUser(){
+
+    this.mitoken = this.tokenService.getToken();
+    console.log(this.mitoken)
+    const payload = this.mitoken.split('.')[1];
+  //split convierte un array a partir de un caracter, le ponemos posición 1 para acceder al payload
+  const payloadDecoded = atob(payload);
+  console.log(payloadDecoded)
+  const values = JSON.parse(payloadDecoded); // parseamos a JSON
+  console.log('valores: ')
+  console.log(values)
+  const username = values.sub;
+
 
     this.userEmail = window.localStorage.UserEmail;
 

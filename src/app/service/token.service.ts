@@ -112,14 +112,18 @@ export class TokenService {
     // ahora nos interesa el payload
     // lo primero que hacemos es convertir la cadena en un array de cadenas
 
-    const token = this.getToken();
-    const payload = token.split('.')[1];
-    //split convierte un array a partir de un caracter, le ponemos posición 1 para acceder al payload
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded); // parseamos a JSON
-//    const roles = values.roles;  Esta es importante si quieres diferenciar entre admin y user
+//     const token = this.getToken();
+//     const payload = token.split('.')[1];
+//     //split convierte un array a partir de un caracter, le ponemos posición 1 para acceder al payload
+//     const payloadDecoded = atob(payload);
+//     const values = JSON.parse(payloadDecoded); // parseamos a JSON
+// //    const roles = values.roles;  Esta es importante si quieres diferenciar entre admin y user
 
-    return true;
+    if(window.localStorage.role == 1){
+      return true;
+    }
+return false;
+
   }
 
   //Para cerrar sesión

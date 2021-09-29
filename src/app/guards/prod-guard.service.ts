@@ -16,17 +16,26 @@ export class ProdGuardService implements CanActivate { // Implementamos canactiv
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-    const expectedRol = route.data.expectedRol;
-    // está el rol real (el que tengo) y el esperado, es decir, el que espero tener
-    // mi expectativa es ser administrador pero me quedo en un mero usuario
+    // const expectedRol = route.data.expectedRol;
+    // // está el rol real (el que tengo) y el esperado, es decir, el que espero tener
+    // // mi expectativa es ser administrador pero me quedo en un mero usuario
 
-    this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';  // Si es true, devuelve admin. Si es false, devuelve user
+    // this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';  // Si es true, devuelve admin. Si es false, devuelve user
 
-    if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
+    // if (!this.tokenService.isLogged() || expectedRol.indexOf(this.realRol) < 0) {
 
-      this.router.navigate(['/']); // Va al index porque no puedo acceder
-      return false; // Devuelve false
+    //   this.router.navigate(['/']); // Va al index porque no puedo acceder
+    //   return false; // Devuelve false
+    // }
+    // return true; //En caso contrario, true
+
+    // this.realRol = this.tokenService.isAdmin() ? 'admin' : 'user';
+
+    if (!this.tokenService.isAdmin()) {
+      this.router.navigate(['/'])
+      return false
     }
-    return true; //En caso contrario, true
+    return true;
+
   }
 }
