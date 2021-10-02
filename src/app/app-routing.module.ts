@@ -7,7 +7,7 @@ import { EditarProductoComponent } from './producto/editar-producto.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './auth/login.component';
 import { RegistroComponent } from './auth/registro.component';
-import { ProdGuardService } from './guards/prod-guard.service';
+import { AdminGuardService } from './guards/admin-guard.service';
 
 
 
@@ -20,6 +20,7 @@ import { SetupCardComponent } from './stripe/setup-card.component';
 import { CartComponent } from './cart/cart.component';
 import { ResetPasswordComponent } from './reset/reset-password.component';
 import { ResetFormComponent } from './reset/reset-form.component';
+import { AdminPanelComponent } from './admin/admin-panel.component';
 
 
 
@@ -35,8 +36,7 @@ const routes: Routes = [
 
   // component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }
 
-  { path: 'productos', component: ListaProductoComponent },
-  { path: 'productos/:id', component: DetalleProductoComponent},
+ 
   // , canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } 
   
 
@@ -46,20 +46,28 @@ const routes: Routes = [
   { path: 'setupcard', component: SetupCardComponent },
 
   { path: 'cart', component: CartComponent },
-  
+
+  { path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuardService] },
+
+  { path: 'admin/nuevo', component: NuevoPostComponent, canActivate: [AdminGuardService] },
+  { path: 'admin/editar/:id', component: EditarPostComponent, canActivate: [AdminGuardService] },
+
   { path: 'articulos', component: ListaPostComponent },
-  { path: ':id', component: FullPostComponent },
+  { path: 'articulos/:id', component: FullPostComponent },
 
-  { path: 'articulos/nuevo', component: NuevoPostComponent, canActivate: [ProdGuardService] },
-  { path: 'articulos/editar/:id', component: EditarPostComponent, canActivate: [ProdGuardService] },
-
-
+  { path: 'productos', component: ListaProductoComponent },
+  { path: 'productos/:idProduct', component: DetalleProductoComponent},
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
+// Volver a poner dentro del forRoote si no funciona. Después de routes, 
+// { relativeLinkResolution: 'legacy' },
+
+// { useHash: true
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

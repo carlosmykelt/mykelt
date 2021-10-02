@@ -92,7 +92,7 @@ export class NuevoPostComponent implements OnInit {
         this.toastr.success('Artículo creado', '', {
           timeOut: 3000
         });
-        this.router.navigate(['/articulos']);
+        this.router.navigate(['/admin']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {

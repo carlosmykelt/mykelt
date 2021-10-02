@@ -5,7 +5,7 @@ import { TokenService } from '../service/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProdGuardService implements CanActivate { // Implementamos canactive
+export class AdminGuardService implements CanActivate { // Implementamos canactive
 
   realRol: string; // variable que es el rol real que vamos a tener, va a ser user o admin
 

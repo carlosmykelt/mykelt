@@ -37,6 +37,12 @@ import { CartComponent } from './cart/cart.component';
 import { ResetPasswordComponent } from './reset/reset-password.component';
 import { ResetFormComponent } from './reset/reset-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { AdminPanelComponent } from './admin/admin-panel.component';
+
+// import { HashLocationStrategy, LocationStrategy } from '@angular/common';  // Angular rutas
+
+
+
 
 // import * as bootstrap from "bootstrap";
 // import * as $ from "jquery";
@@ -63,7 +69,8 @@ registerLocaleData(localeEs, 'es');
     CartComponent,
     ResetPasswordComponent,
     ResetFormComponent,
-    FooterComponent
+    FooterComponent,
+    AdminPanelComponent
 
   ],
   imports: [
@@ -87,6 +94,8 @@ registerLocaleData(localeEs, 'es');
   providers: [
     interceptorProvider,
     DecimalPipe, //Para poner decimales con el sistema europeo
+
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }, //Rutas angular
 
     { provide: LOCALE_ID, useValue: 'es' },  // El de España
 

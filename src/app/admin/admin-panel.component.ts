@@ -2,18 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
 import { PostService } from '../service/post.service';
-import { TokenService } from '../service/token.service';
 
 @Component({
-  selector: 'app-lista-post',
-  templateUrl: './lista-post.component.html',
-  styleUrls: ['./lista-post.component.css']
+  selector: 'app-admin-panel',
+  templateUrl: './admin-panel.component.html',
+  styleUrls: ['./admin-panel.component.css']
 })
-export class ListaPostComponent implements OnInit {
+export class AdminPanelComponent implements OnInit {
+
 
   posts: Post[] = [];
 
-  constructor(private tokenService: TokenService, private postService: PostService, private toastr: ToastrService) { }
+  // isAdmin: number = window.localStorage.role;
+
+  constructor(private postService: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -52,5 +54,4 @@ export class ListaPostComponent implements OnInit {
 
 
   }
-
 }

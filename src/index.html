@@ -3,7 +3,9 @@
 
 <head>
   <title>Productos</title>
-  <base href="./">
+ 
+  <base href="/">
+  
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,42 +47,8 @@
     //  window.addEventListener("unload", function(){
     //   localStorage.clear();
     //  });
-  //   $(window).unload(function(){
-  //   localStorage.clear();
-  // });
 
-  function cleanup(){
-    // place whatever cleanup logic you want here, for example:
-    // window.localStorage.removeItem('my-item')
-}
 
-function tabOpened(){
-    const tabs = JSON.parse(window.localStorage.getItem('tabs'))
-    if (tabs === null) {  //Si tabs es null, como si hubiese una
-        window.localStorage.setItem('tabs', 1)
-    } else { // Si no es null, suma uno
-        window.localStorage.setItem('tabs', ++tabs)
-    }
-}
-
-function tabClosed(){
-    const tabs = JSON.parse(window.localStorage.getItem('tabs'))
-    if (tabs === 1) {  
-        // last tab closed, perform cleanup.
-        window.localStorage.removeItem('tabs')
-        cleanup()
-    } else {
-        window.localStorage.setItem('tabs', --tabs)
-    }
-}
-
-window.onload = function () {
-    tabOpened();
-}
-
-window.onbeforeunload = function () {
-    tabClosed();
-}
 
   </script>
 

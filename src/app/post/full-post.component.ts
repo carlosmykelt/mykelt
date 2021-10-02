@@ -24,6 +24,7 @@ export class FullPostComponent implements OnInit {
   ngOnInit(): void {
 
     const id = this.activatedRoute.snapshot.params.id;
+    console.log('el id es: ' + id)
     this.postService.detail(id).subscribe(
       data => {
         this.post = data;

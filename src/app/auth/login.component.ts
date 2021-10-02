@@ -48,7 +48,27 @@ export class LoginComponent implements OnInit {
     //Vamos a enviarlo al authservice
     this.authService.login(this.loginUsuario).subscribe( //loginusuario y nos suscribimos
       data => { // hacemos un callback
-        this.tokenService.setToken(data.token);
+
+        //----------
+
+          // Creamos una variable tipo objeto que contiene valor y fecha actual con la hora
+          // var object = {value: data.token, timestamp: new Date().getTime()}
+          //Lo añadimos al localstorage, nombre key, con json stringify
+          //este método convierte un objeto javascript en una cadena de texto JSON
+          // this.tokenService.setToken(JSON.stringify(object));
+
+          var time = new Date().getTime().toString();
+
+          this.tokenService.setToken(data.token);
+          this.tokenService.setHour(time);
+
+         
+
+          // this.TryHour();
+        //---------------
+
+        //QUITAR COMENTARIO CUANDO PRUEBE!!!!!!!!!!!!!!!!!!!
+        // this.tokenService.setToken(data.token);
 
         window.localStorage.UserName  = data.name; 
 
@@ -71,5 +91,40 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+
+//   TryHour(){
+
+//     //parse analiza una cadena de texto JSON 
+//     // JSON.parse()
+
+//     var object = this.tokenService.getToken()
+//     //obtenemos la fecha y hora de este item
+  
+
+//     var objectJSON = JSON.parse(object)
+    
+//     var dateString = objectJSON.timestamp
+
+    
+//     // //Creamos nueva variable now con la fecha y hora actual. Le ponemos toString para
+//     // //convertirlo a cadena de caracteres
+//     var now = new Date().getTime().toString();
+
+//     // //Definimos
+//     var ONE_HOUR = 60 * 60 * 1000; /* ms */
+
+//     console.log('La hora del token es: ' + dateString)
+//     console.log('La hora actual es: ' + now)
+
+//     //Si es menos de una hora
+//     var diference = now - dateString
+//     if(diference < ONE_HOUR){
+//       console.log('diferencia menor que una hora');      
+//     }else{
+//       console.log('diferencia mayor a una hora');
+//     }
+
+// }
 
 }

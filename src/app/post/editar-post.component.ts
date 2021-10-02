@@ -41,7 +41,7 @@ export class EditarPostComponent implements OnInit {
 };
 
 
-  constructor(    private postService: PostService,
+  constructor(private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService, private router: Router, private sanitizer: DomSanitizer) { }
 
@@ -103,7 +103,7 @@ export class EditarPostComponent implements OnInit {
           timeOut: 2000, 
        
         });
-        this.router.navigate(['/articulos']);
+        this.router.navigate(['/admin']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {

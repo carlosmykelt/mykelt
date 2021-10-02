@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 
 const TOKEN_KEY = 'AuthToken';  // de clave
+const HOUR = 'Hour';  // de clave
 
 @Injectable({
   providedIn: 'root'
@@ -19,30 +20,26 @@ export class TokenService {
 
   ) { }
 
-  //getter y setter
+
 
   public setToken(token: string): void {
     window.localStorage.removeItem(TOKEN_KEY);
 
-    //-----------
-
-
-  //   const now = new Date()
-
-  //   const item = {
-  //     value: token,
-  //     expiry: now.getTime() + 10*1000,
-  //   }
-  //  localStorage.setItem(TOKEN_KEY, JSON.stringify(item));
-
-
-    //-----------
-
     window.localStorage.setItem(TOKEN_KEY, token); // token key y el token que le estamos pasando como parámetro
+  }
+
+  public setHour(hour: string): void {
+    window.localStorage.removeItem(HOUR);
+
+    window.localStorage.setItem(HOUR, hour); // token key y el token que le estamos pasando como parámetro
   }
 
   public getToken(): string {
     return localStorage.getItem(TOKEN_KEY);
+  }
+
+  public getHour(): string {
+    return localStorage.getItem(HOUR);
   }
 
   public isLogged(): boolean {
@@ -53,6 +50,29 @@ export class TokenService {
 
     return false;
   }
+
+  public timeToken(): void{
+
+  // var object = this.getToken()
+  // console.log(this.getToken());
+
+  var hour = this.getHour()
+  var hourNumber = Number(hour)
+
+  // var objectJSON = JSON.parse(object)
+  // var dateString = objectJSON.timestamp
+
+  var now = new Date().getTime().toString();
+  var nowNumber = Number(now)
+
+  var ONE_HOUR = 60 * 60 * 1000;
+
+  var diference = nowNumber - hourNumber
+  console.log('La diferencia es: ' + (diference/1000))
+  if(diference > ONE_HOUR){
+    window.localStorage.clear();
+  }
+}
 
 //------------
   //   // Verify the token
@@ -87,6 +107,7 @@ export class TokenService {
   public getUserName(): string {
     if (!this.isLogged()) {
       return null;
+      // return 'manolo'
     }
     // el token tiene un aspecto similar a este: dijsdnfdjinf.fasidjnffi.fisjdfnsdif 
     // se compone de: header, payload y firma

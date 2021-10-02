@@ -143,3 +143,9 @@ a:hover {
 	cursor: pointer;
 	outline: inherit;
 }
+
+.admintable{}
+
+.admintable:hover{
+  background-color: #f2f3f5;
+}

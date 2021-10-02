@@ -43,7 +43,7 @@ export class DetalleProductoComponent implements OnInit {
 
     this.isLogged = this.tokenService.isLogged();
 
-    const id = this.activatedRoute.snapshot.params.id;
+    const id = this.activatedRoute.snapshot.params.idProduct;
 
     console.log('Esto es lo que sale del snapshot params: ' + id);
 
@@ -72,7 +72,7 @@ export class DetalleProductoComponent implements OnInit {
 
 
   volver(): void {
-    this.router.navigate(['/lista']);
+    this.router.navigate(['/productos']);
   }
 
 
