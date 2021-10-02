@@ -7,6 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from '../service/token.service';
 
 
+  //Prueba stripe
+  declare var Stripe : any;
+
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -28,11 +32,14 @@ export class CartComponent implements OnInit {
 
   // units: number = [];
 
-  //Prueba para calcula precio
+  //Prueba para calcular precio
   ShowPrice: number;
   Sumaprecios: any[] = [];
   PrecioTotal: number = 0;
   PrecioTotalDecimal: string;
+
+  //Prueba stripe
+  stripe: any;
 
   //-----
 
@@ -46,6 +53,14 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    console.log('el idstripe es')
+    // console.log(idstripe._apiKey);
+    
+
+    // this.stripe = Stripe('pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu');
+
+    // this.stripe = Stripe(idstripe._apiKey);
 
     this.isLogged = this.tokenService.isLogged();
 
@@ -323,7 +338,7 @@ export class CartComponent implements OnInit {
     // console.log(pricesArray)
 
     // console.log('llega a función checkout y el id es: ' + PriceId)
-    var stripe = stripe('pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu');
+    var stripe = Stripe('pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu');
 
     // var checkoutButton = document.getElementById('checkout-button-price_1JRykpEDzo7bolN0pL6nAUjv');
     // checkoutButton.addEventListener('click', function () {

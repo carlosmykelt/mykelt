@@ -42,7 +42,7 @@
             <tr>
               <td> -->
                 <div class="mt-3 "> <a class="h5" routerLink="/productos/{{producto.id}}">{{producto.name}}</a> </div>
-                <div class="listheader"> {{producto.metadata.price}} € </div>
+                <div class="listheader"> {{producto.metadata.price | number:'1.2-2':'es'}} € </div>
               <!-- </td>
             </tr> -->
     
@@ -87,8 +87,7 @@
 
   </div>
 
-  <!-- Load Stripe.js on your website. -->
-  <script src="https://js.stripe.com/v3"></script>
+ 
 
   <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding.
   <button
