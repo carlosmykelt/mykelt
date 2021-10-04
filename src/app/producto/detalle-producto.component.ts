@@ -102,12 +102,12 @@ export class DetalleProductoComponent implements OnInit {
 
     this.productoService.price(productoId).subscribe(
       data => {
-        this.price = data; // lo carga en el Array que hemos creado, llamado productos
+      
 
         console.log('imprimimos price');
-        console.log(this.price.data[0].id);
+        console.log(data.data[0].id);
 
-        let idprice = this.price.data[0].id;
+        let idprice = data.data[0].id;
 
         this.crear(productoId, idprice, quantity);
         

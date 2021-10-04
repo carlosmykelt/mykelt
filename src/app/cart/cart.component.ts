@@ -18,7 +18,7 @@ import { TokenService } from '../service/token.service';
 })
 export class CartComponent implements OnInit {
 
-  price: any[] = [];
+  precio: any[] = [];
 
   carrito: Cart[] = []; // Aquí se carga los productos de carrito que tenemos en la db
 
@@ -38,8 +38,6 @@ export class CartComponent implements OnInit {
   PrecioTotal: number = 0;
   PrecioTotalDecimal: string;
 
-  //Prueba stripe
-  stripe: any;
 
   //-----
 
@@ -190,6 +188,14 @@ export class CartComponent implements OnInit {
 
         console.log('Con la resta sería: ' + this.PrecioTotal)
 
+        //Modificamos el array que se enviará al checkout
+       for (let cart of this.carrito) {
+     
+         if(cart.idProduct == idproduct){
+           cart.quantity = cart.quantity - 1
+         }
+      }
+
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
@@ -230,23 +236,35 @@ export class CartComponent implements OnInit {
       }
     );
 
+
+
     this.PrecioSuma(idproduct); // Sumamos 1 al precio total que se muestra en la vista
   }
 
 
   PrecioSuma(idproduct) {
+  
+    console.log(this.carrito);
     this.productoService.detail(idproduct).subscribe(
       data => {
-
+      
         this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);   // Sumamos 1 al precio total que se muestra en la vista
 
-        console.log('Con la resta sería: ' + this.PrecioTotal)
+       //Modificamos el array que se enviará al checkout
+       for (let cart of this.carrito) {
+        
+          if(cart.idProduct == idproduct){
+            cart.quantity = cart.quantity + 1
+          }
+       }
 
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000
         });
+
+    
 
       }
     );
@@ -282,12 +300,12 @@ export class CartComponent implements OnInit {
 
       this.productoService.price(cart.id).subscribe(
         data => {
-          this.price = data; // lo carga en el Array que hemos creado, llamado productos
+          // this.precio = data; // lo carga en el Array que hemos creado, llamado productos
 
 
           // console.log(this.price.data[0].id);
 
-          cart.idPrice = this.price.data[0].id;
+          cart.idPrice = data[0].id;
 
           this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
 
@@ -302,23 +320,6 @@ export class CartComponent implements OnInit {
     this.checkout(this.PricesArray)
 
   }
-  // this.productoService.price(productoId).subscribe(
-  //   data => {
-  //     this.price = data; // lo carga en el Array que hemos creado, llamado productos
-
-  //     console.log('imprimimos price');
-  //     console.log(this.price.data[0].id);
-
-  //     let PriceId = this.price.data[0].id;
-
-  //     this.checkout(PriceId);
-
-  //   },
-  //   err => {
-  //     console.log(err);
-  //   }
-  // );
-
 
 
 
