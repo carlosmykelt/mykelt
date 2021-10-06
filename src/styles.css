@@ -131,6 +131,7 @@ a:hover {
 #blobSvg{
 
   position: absolute;
+  height: 50%;
 
 }
 
@@ -149,3 +150,4 @@ a:hover {
 .admintable:hover{
   background-color: #f2f3f5;
 }
+

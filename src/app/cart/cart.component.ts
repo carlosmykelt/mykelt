@@ -30,6 +30,8 @@ export class CartComponent implements OnInit {
 
   isLogged = false;
 
+  livemode: boolean = false;
+
   // units: number = [];
 
   //Prueba para calcular precio
@@ -50,6 +52,16 @@ export class CartComponent implements OnInit {
 
   ) { }
 
+  imprimelo(product: any){
+
+    
+    console.log(product.idDB);
+
+
+    
+    
+  }
+
   ngOnInit(): void {
 
     console.log('el idstripe es')
@@ -68,6 +80,27 @@ export class CartComponent implements OnInit {
 
   }
 
+  boxChange(price: number, quantity: number, check: boolean){
+    //Comprueba si este producto tiene el check
+    //Si lo tiene, usa el método totalprice para añadirlo
+    //Si no lo tiene, no lo añadas
+price
+    console.log(price);
+    console.log(quantity);
+    console.log(check);
+    
+
+    if(check){
+      console.log('check si');
+      
+      this.TotalPrice(price, quantity)
+    }else{
+      this.RemoveOfTotalPrice(price, quantity)
+      
+    }
+  }
+
+
   TotalPrice(precio, cantidad) {
 
     // Modificamos la variable que muestra el precio total
@@ -77,6 +110,15 @@ export class CartComponent implements OnInit {
 
     console.log('tiene el precio?')
     console.log(this.PrecioTotal)
+
+  }
+
+  RemoveOfTotalPrice(precio, cantidad) {
+
+    // Modificamos la variable que muestra el precio total
+    this.PrecioTotal = this.PrecioTotal - (Number(precio) * Number(cantidad))
+
+ 
 
   }
 
@@ -95,19 +137,26 @@ export class CartComponent implements OnInit {
         // Lo recorremos para sacar el nombre, precio. Además, añadimos a este array el quantity y el id.
         // Para sacar el nombre y precio, es necesario hacer un subscribe a produtoService.detail
 
+       
+
         for (let nombre of this.carrito) {
+        
 
           const idp = nombre.idProduct;
 
           this.productoService.detail(idp).subscribe(
             data => {
 
+            
               data.quantity = nombre.quantity;
               data.idDB = nombre.id;
+           
 
               this.cartProducts.push(data);   // Tenemos un array con todos los datos de la API + quantity + nombre
 
-              this.TotalPrice(data.metadata.price, data.quantity);
+
+              this.PrecioTotal = 0;
+              // this.TotalPrice(data.metadata.price, data.quantity);  Comentamos esta para ponerla en el check
 
               // // Modificamos la variable que muestra el precio total
               // this.PrecioTotal = this.PrecioTotal + (Number(data.metadata.price) * Number(data.quantity))
@@ -145,6 +194,8 @@ export class CartComponent implements OnInit {
   }
 
   resta(idproduct: string, quantity: number) {
+
+
 
     // quiero coger el array cartProducts, acceder al producto indicado y restarle/sumarle una unidad
     // Esto lo hago para que se muestre la modificación de la unidad directamente
@@ -184,7 +235,10 @@ export class CartComponent implements OnInit {
     this.productoService.detail(idproduct).subscribe(
       data => {
 
-        this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);   // Restamos 1 al precio total
+
+        
+
+        // this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);   // Restamos 1 al precio total
 
         console.log('Con la resta sería: ' + this.PrecioTotal)
 
@@ -195,6 +249,16 @@ export class CartComponent implements OnInit {
            cart.quantity = cart.quantity - 1
          }
       }
+
+
+    // Recorremos el producto. Si el id coincide y además, el check es true, restamos al cuadro del precio
+    for(let cartProduct of this.cartProducts){
+      if(cartProduct.id == idproduct && cartProduct.livemode == true){
+        //Resta al cuadro, el precio*quantity
+        this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);
+      }
+
+    }
 
       },
       err => {
@@ -238,7 +302,7 @@ export class CartComponent implements OnInit {
 
 
 
-    this.PrecioSuma(idproduct); // Sumamos 1 al precio total que se muestra en la vista
+    this.PrecioSuma(idproduct); // Método para modificar las unidades que se enviarán al checkout y el precio de la vista
   }
 
 
@@ -247,8 +311,6 @@ export class CartComponent implements OnInit {
     console.log(this.carrito);
     this.productoService.detail(idproduct).subscribe(
       data => {
-      
-        this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);   // Sumamos 1 al precio total que se muestra en la vista
 
        //Modificamos el array que se enviará al checkout
        for (let cart of this.carrito) {
@@ -257,6 +319,15 @@ export class CartComponent implements OnInit {
             cart.quantity = cart.quantity + 1
           }
        }
+
+       // Recorremos el producto. Si el id coincide y además, el check es true, sumamos al cuadro del precio
+       for(let cartProduct of this.cartProducts){
+        if(cartProduct.id == idproduct && cartProduct.livemode == true){
+          //Suma al cuadro, el precio*quantity
+          this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);
+        }
+  
+      }
 
       },
       err => {
@@ -276,9 +347,29 @@ export class CartComponent implements OnInit {
 
     for (let cart of this.carrito) {
 
-      // console.log(cart.metadata.price)
+      // Por cada registro del carrito, probamos todos los cartproducts
+      for (let cartProduct of this.cartProducts){
+        if(cartProduct.idDB == cart.id){
+          console.log(cartProduct.idDB + ' ES IGUAL A ' + cart.id);
+          
+          if(cartProduct.livemode == true){
+            console.log('ADEMÁS DE IGUAL, EL CHECK ES TRUE');
+            
+            this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
+          }else{
+            console.log(cartProduct.idDB + 'ERA IGUAL PERO NO ERA TRUE');
+            
+          }
+          
+        }
+      }
+      
+      //Ve al cartProducts cuyo idDB es el id de carrito  --> bucle cartProducts, if idDB igual a cart.id. Continúa
+      // if cartProducts.check es true, continúa -> hacemos el push
+      
 
-      this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
+
+      // this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
     }
 
     console.log('imprimimos el pricesarray')
@@ -386,9 +477,6 @@ export class CartComponent implements OnInit {
     // });
   }
 
-  comprobar(id: number) {
-    console.log(id)
-  }
 
   borrar(id: number) {
 
@@ -409,5 +497,7 @@ export class CartComponent implements OnInit {
       }
     );
   }
+
+
 
 }

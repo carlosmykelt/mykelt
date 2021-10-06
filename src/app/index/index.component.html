@@ -23,7 +23,7 @@
 
 </div>
 
-    <div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border rounded shadow-lg py-5 px-md-5">
+    <div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border corner shadow-lg py-5 px-md-5">
         <div *ngIf="nombreUsuario" class="m-lg-5">
 
             <div class="h5 mt-4">Hola {{userName}} ({{userEmail}}).    </div>
@@ -38,21 +38,21 @@
         </div>
 
         <div *ngIf="!nombreUsuario" class="m-lg-5">
-            <p class="h1">Acceda a la lista de productos</p>
+            <p class="h1">Lee análisis sobre la mejor tecnología del momento</p>
             <p class="h5 mt-5 font-weight-normal">
-                Esta lista contiene productos con un alto volumen de ventas.
+                Revisiones de productos de calidad.
             </p>
             <div class="d-flex justify-content-lg-center">
 
                 <div class="mt-4 d-flex flex-column flex-lg-row mb-1 col-lg-10">
                     <div class="col d-flex justify-content-center mt-3">
-                        <button class="btn btn-outline-dark btn-block" routerLink="/login">
+                        <button class="btn btn-outline-dark py-2 px-4  my-2 corner bold600 btn-block" routerLink="/login">
                             Iniciar Sesión
                         </button>
                     </div>
 
                     <div class="col d-flex justify-content-center mt-3">
-                        <button class="btn boton shadow btn-block" routerLink="/registro">
+                        <button class="btn btn-dark py-2 px-4 shadow my-2 corner bold600 btn-block" routerLink="/registro">
                             Registrarse
                         </button>
                     </div>
@@ -63,3 +63,4 @@
 
     </div>
 
+    <app-footer></app-footer>
