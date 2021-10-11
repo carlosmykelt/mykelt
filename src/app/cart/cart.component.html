@@ -16,13 +16,14 @@
 <div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border corner shadow-lg py-5 px-md-5"
   *ngIf="!isLogged">
   <div class="container d-flex justify-content-center ">
-    <p class="h1 font-weight-bold"> Cesta </p>
+    <p class="display-4 bold600 text-center ">Cesta</p>
+    <!-- <p class="h1 font-weight-bold"> Cesta </p> -->
   </div>
 
   <div class="container d-flex justify-content-center mt-3">
 
     <div class="d-flex flex-column">
-      <div class="h2 text-center mb-3">
+      <div class="h2  mb-3">
         <p>
           Inicia sesión para ver el carrito
         </p>
@@ -41,7 +42,8 @@
 <!-- Si ya se ha cargado, muestra el div -->
 <div *ngIf="cargado==true">
 
-  <div class="container col-lg-5   pt-2 my-5 ">
+
+  <!-- <div class="container col-lg-5   pt-2 my-5 ">
     <div class="card corner bg-white shadow d-flex flex-column p-sm-5 p-4 mx-3">
 
       <div class="container d-flex justify-content-center mb-3">
@@ -49,7 +51,7 @@
       </div>
 
       <div class="mb-5 h2">
-        <!-- Utilizamos DecimalPipe que viene integrado en Angular por defecto -->
+        <!-- Utilizamos DecimalPipe que viene integrado en Angular por defecto --
         Total: {{PrecioTotal | number:'1.2-2':'es'}} euros.
       </div>
       <div>
@@ -58,12 +60,12 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
 
-  <div class="container d-flex justify-content-around flex-wrap pt-3">
+  <div class="container d-flex justify-content-around flex-wrap pt-3 my-5 py-5">
     <!-- cartProducts es el que contiene lo que necesitamos para la vista -->
     <div class="col-lg-5" *ngFor="let cartProduct of cartProducts" [style.max-width.px]="400">
 
@@ -153,4 +155,22 @@
 <!--cierra el ngif de cargado -->
 
 
-<app-footer></app-footer>
+
+<div class="fixed-bottom bg-dark text-white border-top cornertop mx-md-5 mx-2 shadow" *ngIf="isLogged">
+<div class="container">
+    <div class="my-3 mx-lg-5" [style.max-width.px]="2000">
+
+      <div class="row  ">
+          <div class="col-auto mr-auto col align-self-center mt-1 ml-2">Total: <span class="bold600">{{PrecioTotal | number:'1.2-2':'es'}} €</span></div>
+          <div class="col-auto col align-self-center mr-2">
+            <button class="btn cta corner text-white bold600 py-2 px-4 shadow-sm" (click)="pagar()">
+              COMPRAR
+            </button>
+          </div>
+
+      </div>
+    </div>
+</div>
+</div>
+
+<!-- <app-footer></app-footer> -->

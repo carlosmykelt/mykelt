@@ -1,17 +1,15 @@
 
 <app-menu></app-menu>
 
-  <div class="mb-5">
-    <br>
-  </div>
+
 
   <div class="container ">
 
-    <span class="h1 font-weight-bold">Productos </span>
+    <p class="display-4 bold600 text-center my-5 py-4">Productos </p>
 
-    <div class="form-group my-5">
+    <!-- <div class="form-group my-5">
       <input type="text" class="form-control" name="filterPost" placeholder="Buscar..." [(ngModel)]="filterPost">
-    </div>
+    </div> -->
 
     <!-- Si aún no se ha cargado, muestra el spinner -->
     <div *ngIf="cargado==false" class="text-center my-5"> 
@@ -19,8 +17,8 @@
   </div>
 
     <!-- Si ya se ha cargado, muestra el div -->
-    <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
-      <div class="col-lg-5  d-flex justify-content-center mt-5" *ngFor="let producto of productos">
+    <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap mb-5 pb-5">
+      <div class="  d-flex justify-content-center mt-5" *ngFor="let producto of productos">
 
         <!-- <a routerLink="/{{post.id}}"> -->
 
