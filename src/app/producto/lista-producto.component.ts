@@ -18,6 +18,7 @@ import { Cart } from '../models/cart';
   styleUrls: ['./lista-producto.component.css']
 })
 export class ListaProductoComponent implements OnInit {
+  
 
   productos: any[] = [];
 
@@ -41,8 +42,10 @@ export class ListaProductoComponent implements OnInit {
   isLogged = false;
   nombreUsuario: string = '';
 
-
   filterPost = '';
+
+  totalLength: any;
+  page:number = 1;
 
   constructor(
 
@@ -95,8 +98,7 @@ export class ListaProductoComponent implements OnInit {
       data => {
         this.productos = data; // lo carga en el Array que hemos creado, llamado productos
 
-        console.log('imprimimos productos');
-        console.log(this.productos);
+        this.totalLength = data.length;
         
         this.cargado = true;
 

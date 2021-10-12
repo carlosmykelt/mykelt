@@ -17,8 +17,12 @@
   </div>
 
     <!-- Si ya se ha cargado, muestra el div -->
-    <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap mb-5 pb-5">
-      <div class="  d-flex justify-content-center mt-5" *ngFor="let producto of productos">
+    <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
+      <div class="  d-flex justify-content-center mt-5" *ngFor="let producto of productos.reverse() | paginate: { 
+        itemsPerPage: 2, 
+        currentPage: page, 
+        totalItems: totalLenght
+      }">
 
         <!-- <a routerLink="/{{post.id}}"> -->
 
@@ -95,6 +99,11 @@
   </button> -->
 
   <div id="error-message"></div>
+
+
+  <div class="container mb-5">
+    <pagination-controls class="my-pagination text-center" (pageChange)="page = $event" previousLabel="" nextLabel="" directionLinks="false"></pagination-controls>
+  </div>
 
   <app-footer></app-footer>
 

@@ -21,6 +21,9 @@ import { CartComponent } from './cart/cart.component';
 import { ResetPasswordComponent } from './reset/reset-password.component';
 import { ResetFormComponent } from './reset/reset-form.component';
 import { AdminPanelComponent } from './admin/admin-panel.component';
+import { AtribucionesComponent } from './footer/atribuciones.component';
+import { PreguntasComponent } from './footer/preguntas.component';
+import { ContactoComponent } from './footer/contacto.component';
 
 
 
@@ -57,6 +60,11 @@ const routes: Routes = [
 
   { path: 'productos', component: ListaProductoComponent },
   { path: 'productos/:idProduct', component: DetalleProductoComponent},
+
+
+  // { path: 'atribuciones', component: AtribucionesComponent },
+  { path: 'preguntas', component: PreguntasComponent },
+  { path: 'contacto', component: ContactoComponent },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

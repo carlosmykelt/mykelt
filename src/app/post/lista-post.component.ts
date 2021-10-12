@@ -13,6 +13,9 @@ export class ListaPostComponent implements OnInit {
 
   posts: Post[] = [];
 
+  totalLength: any;
+  page:number = 1;
+
   constructor(private tokenService: TokenService, private postService: PostService, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -25,6 +28,9 @@ export class ListaPostComponent implements OnInit {
     this.postService.lista().subscribe(
       data =>{
         this.posts = data; // lo carga en el Array que hemos creado, llamado posts
+
+        this.totalLength = data.length;
+
       }, 
       err => {
         console.log(err);

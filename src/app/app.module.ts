@@ -39,6 +39,12 @@ import { ResetFormComponent } from './reset/reset-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminPanelComponent } from './admin/admin-panel.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AtribucionesComponent } from './footer/atribuciones.component';
+import { PreguntasComponent } from './footer/preguntas.component';
+import { ContactoComponent } from './footer/contacto.component';
+
+
 // import { HashLocationStrategy, LocationStrategy } from '@angular/common';  // Angular rutas
 
 
@@ -70,7 +76,10 @@ registerLocaleData(localeEs, 'es');
     ResetPasswordComponent,
     ResetFormComponent,
     FooterComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    AtribucionesComponent,
+    PreguntasComponent,
+    ContactoComponent
 
   ],
   imports: [
@@ -88,7 +97,8 @@ registerLocaleData(localeEs, 'es');
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    NgxPaginationModule
 
   ],
   providers: [
