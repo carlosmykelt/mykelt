@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
@@ -19,9 +20,12 @@ export class FullPostComponent implements OnInit {
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router) { }
+    private router: Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
+
+    this.titleService.setTitle('Artículo | MYKELT');
 
     const id = this.activatedRoute.snapshot.params.id;
     console.log('el id es: ' + id)
@@ -57,7 +61,7 @@ export class FullPostComponent implements OnInit {
   // }
   
   volver(): void {
-    this.router.navigate(['/articulos']);
+    this.router.navigate(['/blog']);
   }
 
 }

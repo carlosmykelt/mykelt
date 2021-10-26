@@ -5,7 +5,8 @@ import { ProductoService } from '../service/producto.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from '../service/token.service';
-
+import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
   //Prueba stripe
   declare var Stripe : any;
@@ -48,29 +49,19 @@ export class CartComponent implements OnInit {
     private productoService: ProductoService,
     private toastr: ToastrService,
     private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private titleService: Title,
+    // private env: environment
 
   ) { }
 
-  imprimelo(product: any){
 
-    
-    console.log(product.idDB);
-
-
-    
-    
-  }
 
   ngOnInit(): void {
 
-    console.log('el idstripe es')
-    // console.log(idstripe._apiKey);
-    
+    this.titleService.setTitle('Cesta | MYKELT');
 
-    // this.stripe = Stripe('pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu');
 
-    // this.stripe = Stripe(idstripe._apiKey);
 
     this.isLogged = this.tokenService.isLogged();
 
@@ -84,7 +75,7 @@ export class CartComponent implements OnInit {
     //Comprueba si este producto tiene el check
     //Si lo tiene, usa el método totalprice para añadirlo
     //Si no lo tiene, no lo añadas
-price
+// price
     console.log(price);
     console.log(quantity);
     console.log(check);
@@ -430,7 +421,7 @@ price
     // console.log(pricesArray)
 
     // console.log('llega a función checkout y el id es: ' + PriceId)
-    var stripe = Stripe('pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu');
+    var stripe = Stripe(environment.stripeId);
 
     // var checkoutButton = document.getElementById('checkout-button-price_1JRykpEDzo7bolN0pL6nAUjv');
     // checkoutButton.addEventListener('click', function () {
@@ -461,8 +452,10 @@ price
        * Instead use one of the strategies described in
        * https://stripe.com/docs/payments/checkout/fulfill-orders
        */
-      successUrl: window.location.protocol + '//http://localhost:4200/lista',
-      cancelUrl: window.location.protocol + '//http://localhost:4200/canceled',
+      // successUrl: window.location.protocol + '//http://localhost:4200/productos',
+      // cancelUrl: window.location.protocol + '//http://localhost:4200/cart',
+      successUrl: environment.dominio + 'productos',
+      cancelUrl: environment.dominio + 'cart',
     })
       .then(function (result) {
         if (result.error) {

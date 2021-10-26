@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginUsuario } from '../models/login-usuario';
 import { TokenService } from '../service/token.service';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 //Se utilizará para comprobar si estamos o no estamos logueados 
 
@@ -29,10 +30,12 @@ export class LoginComponent implements OnInit {
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Iniciar sesión | MYKELT');
   }
 
   // Método para hacer el login

@@ -1,6 +1,6 @@
 
 <app-menu></app-menu>
-
+<div class="wrapper">
 
 
   <div class="container ">
@@ -18,8 +18,8 @@
 
     <!-- Si ya se ha cargado, muestra el div -->
     <div *ngIf="cargado==true" class="container d-flex justify-content-around flex-wrap">
-      <div class="  d-flex justify-content-center mt-5" *ngFor="let producto of productos.reverse() | paginate: { 
-        itemsPerPage: 2, 
+      <div class="  d-flex justify-content-center mt-5" *ngFor="let producto of productos | paginate: { 
+        itemsPerPage: 6, 
         currentPage: page, 
         totalItems: totalLenght
       }">
@@ -102,9 +102,11 @@
 
 
   <div class="container mb-5">
-    <pagination-controls class="my-pagination text-center" (pageChange)="page = $event" previousLabel="" nextLabel="" directionLinks="false"></pagination-controls>
+    <!-- (pageChange)="page = $event" -->
+    <pagination-controls class="my-pagination text-center"  (pageChange)="onPageChange($event)"  previousLabel="" nextLabel="" directionLinks="false"></pagination-controls>
   </div>
 
+</div>
   <app-footer></app-footer>
 
 

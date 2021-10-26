@@ -3,6 +3,7 @@ import { Producto } from '../models/producto';
 import { ProductoService } from '../service/producto.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-editar-producto',
@@ -19,11 +20,15 @@ export class EditarProductoComponent implements OnInit {
     private productoService: ProductoService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   //Para ver los detalles 
   ngOnInit() {
+
+    this.titleService.setTitle('Editar producto | MYKELT');
+
     const id = this.activatedRoute.snapshot.params.id;
     this.productoService.detail(id).subscribe(
       data => {
@@ -48,7 +53,7 @@ export class EditarProductoComponent implements OnInit {
         this.toastr.success('Producto actualizado', '', {
           timeOut: 3000
         });
-        this.router.navigate(['/lista']);
+        this.router.navigate(['/productos']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {

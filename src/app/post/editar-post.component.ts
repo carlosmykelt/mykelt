@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
 import { PostService } from '../service/post.service';
 
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 
 import * as customEditor from './../build2/ckeditor';
 
@@ -43,9 +43,12 @@ export class EditarPostComponent implements OnInit {
 
   constructor(private postService: PostService,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService, private router: Router, private sanitizer: DomSanitizer) { }
+    private toastr: ToastrService, private router: Router, private sanitizer: DomSanitizer,
+    private titleService: Title) { }
 
   ngOnInit() {
+
+    this.titleService.setTitle('Editar | MYKELT');
 
     const id = this.activatedRoute.snapshot.params.id;
     this.postService.detail(id).subscribe(

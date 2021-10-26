@@ -1,5 +1,7 @@
 <app-menu></app-menu>
 
+<div class="wrapper">
+
 <p class="display-4 bold600 text-center my-5 py-4">Dashboard</p>
 <!-- <p class="h2 text-center mt-5 pt-5"> Dashboard </p> -->
 
@@ -29,7 +31,7 @@
               </a>
             </tr> -->
 
-        <a class="h3" routerLink="articulos/{{post.id}}">{{post.name}}</a>
+        <a class="h3" routerLink="blog/{{post.id}}">{{post.name}}</a>
 
         <div class="listheader mt-2"> {{post.header}} </div>
 
@@ -37,7 +39,7 @@
         <!-- Probando. Este sería el header del artículo. Abajo tengo comentado la forma de mostrarlo bien. -->
         <!-- <div [innerHTML]="post.body"></div> -->
         <div class="mt-2">
-          <button class="btn px-0 menulink bold600" routerLink="../articulos/{{post.id}}">Ver artículo </button>
+          <button class="btn px-0 menulink bold600" routerLink="../blog/{{post.id}}">Ver artículo </button>
           &nbsp;
           <button class="btn px-0 menulink bold600" routerLink="editar/{{post.id}}">Editar </button>
           &nbsp;
@@ -54,5 +56,8 @@
     <!-- </a> -->
 
   </div>
-  <!-- 
-</div> -->
+  
+</div>
+</div>
+
+<app-footer></app-footer>

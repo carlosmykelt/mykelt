@@ -1,12 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   font-family: 'Lato', sans-serif;
+  height: 100%;
+
+}
+
+.blackbackground{
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+h1, h2{
+  margin-bottom: 25px;
 }
 
 /* Fondo gris */
 body{
+ 
+  height: 100%;
+
   background-color: #fafbfe;
 }
+
+.wrapper{
+  /* height:auto !important; */
+  min-height:100%;
+}
+
+
+
+img {
+  max-width: 100%;
+  height: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .postname{
+    font-size: 32px;
+  }
+}
+
+
 
 
 a {
@@ -104,9 +142,17 @@ a:hover {
   border-bottom-right-radius: 25px;
 }
 
+.fontheader{
+  font-size: 18px;
+}
+
 .fontbody{
-  font-size: 130%;
-  /* font-family: 'Inter', sans-serif; */
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
+
+p{
+  margin-bottom: 30px;
 }
 
 /* Botones para el login social */
@@ -138,6 +184,7 @@ a:hover {
   border-radius: 25px;
   background-color: #12141d;
 } */
+
 
 #blobSvg{
 
@@ -173,6 +220,31 @@ a:hover {
 .h1{
  font-size:5vw;
 }
+
+
+
+.btn-dark {background-image: linear-gradient(to right, #000000 0%, #434343  51%, #000000  100%)}
+.btn-dark {
+   margin: 10px;
+   /* padding: 15px 45px; */
+   text-align: center;
+   /* text-transform: uppercase; */
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   /* border-radius: 10px; */
+   display: block;
+ }
+
+ .btn-dark:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+
 
 
 

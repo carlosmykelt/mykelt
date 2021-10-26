@@ -1,4 +1,5 @@
 <app-menu></app-menu>
+<div class="wrapper">
 
     <div *ngIf="cargandoeditar==true" class="text-center my-5"> 
         <div class="spinner-border" role="status"></div> 
@@ -23,7 +24,7 @@
  
             <button class="btn boton btn-block" [disabled]="!f.valid">
                 <i class="fas fa-pencil-alt"></i> Actualizar</button>
-            <a class="linkmin btn btn-block" routerLink="/lista"> Volver </a>
+            <a class="linkmin btn btn-block" routerLink="/producto"> Volver </a>
         </form>
     </div>
 
@@ -33,3 +34,6 @@
 
 
 </div>
+
+</div>
+<app-footer></app-footer>

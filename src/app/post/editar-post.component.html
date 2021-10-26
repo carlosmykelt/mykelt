@@ -1,5 +1,6 @@
-<div class="bg-white">
+<!-- <div class="bg-white"> -->
     <app-menu></app-menu>
+    <div class="wrapper">
 
     <div class="py-5">
 
@@ -41,8 +42,8 @@
                 </div>
 
                 <div class="d-flex justify-content-around mt-5">
-                    <a class="linkmin btn btn-block" routerLink="/admin"> Volver </a>
-                    <button class="btn boton btn-block" [disabled]="!f.valid">
+                    <a class="linkmin btn " routerLink="/admin"> Volver </a>
+                    <button class="btn btn-dark corner bold600 px-5" [disabled]="!f.valid" [style.max-width.px]="200">
                         Guardar
                     </button>
                 </div>
@@ -51,4 +52,6 @@
         </div>
     </div>
 
+<!-- </div> -->
 </div>
+<app-footer></app-footer>

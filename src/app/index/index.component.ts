@@ -79,10 +79,12 @@ export class IndexComponent implements OnInit {
                 this.tokenService.setToken(this.tokenoauth);
                 this.tokenService.setHour(time);
 //---
+window.localStorage.userName = params.name;
+window.localStorage.UserEmail = params.email;
 
-      this.userName = params.name;
+      this.userName = window.localStorage.userName;
 
-      this.userEmail = params.email;
+      this.userEmail = window.localStorage.UserEmail;
 
       } else{
 

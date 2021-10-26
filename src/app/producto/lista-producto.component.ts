@@ -11,6 +11,7 @@ import { Sinid } from '../models/sinid';
 
 import { DecimalPipe } from '@angular/common'; // para decimal pipe
 import { Cart } from '../models/cart';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lista-producto',
@@ -54,10 +55,13 @@ export class ListaProductoComponent implements OnInit {
     private toastr: ToastrService,
     private tokenService: TokenService,
     private router: Router,
-    private DecimalPipe: DecimalPipe
+    private DecimalPipe: DecimalPipe,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+
+    this.titleService.setTitle('Productos | MYKELT');
 
     this.cargarProductos(); // Carga los productos
 
@@ -66,19 +70,6 @@ export class ListaProductoComponent implements OnInit {
 
     //  ---------
 
-    let arrayprices: any[] = 
-    [
-    {
-      price: 'price_1JRykpEDzo7bolN0pL6nAUjv'
-    },
-    {
-      price: 'price_1JRwekEDzo7bolN0BFSLdzXs'
-    }
-  ]
-
-  for(let pri of arrayprices){
-    console.log(pri.price);
-  }
 
 
   }
@@ -88,7 +79,10 @@ export class ListaProductoComponent implements OnInit {
   //   return TerConComa;
   // }
 
-
+  onPageChange(page: number){
+    this.page = page;
+    window.scrollTo(0, 0);
+  }
 
   cargarProductos(): void {
 
@@ -98,6 +92,8 @@ export class ListaProductoComponent implements OnInit {
       data => {
         this.productos = data; // lo carga en el Array que hemos creado, llamado productos
 
+        console.log(data);
+        
         this.totalLength = data.length;
         
         this.cargado = true;

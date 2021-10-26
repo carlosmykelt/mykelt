@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { Reset } from '../models/reset';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reset-form',
@@ -23,9 +24,12 @@ export class ResetFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private resetService: ResetService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private titleService: Title) { }
 
   ngOnInit(): void {
+
+    this.titleService.setTitle('Restablecer contraseña | MYKELT');
 
     this.activatedRoute.queryParams.subscribe(params => {
 

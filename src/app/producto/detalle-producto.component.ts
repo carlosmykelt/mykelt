@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Producto } from '../models/producto';
 import { CartService } from '../service/cart.service';
 import { TokenService } from '../service/token.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -34,12 +35,15 @@ export class DetalleProductoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
     private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private titleService: Title
   ) {
 
   }
 
   ngOnInit() {
+
+    this.titleService.setTitle('Detalles del producto | MYKELT');
 
     this.isLogged = this.tokenService.isLogged();
 

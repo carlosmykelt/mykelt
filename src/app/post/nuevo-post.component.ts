@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 //import { CKEditorComponent, CKEditorModule } from 'ckeditor4-angular';
 
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 
 import * as customEditor from './../build2/ckeditor';
 
@@ -50,14 +50,15 @@ export class NuevoPostComponent implements OnInit {
 
 
   constructor(private postService: PostService, private toastr: ToastrService,
-    private router: Router, private sanitizer: DomSanitizer) {
+    private router: Router, private sanitizer: DomSanitizer,
+    private titleService: Title) {
 
       console.log(this.name);
       
      }
 
   ngOnInit() {
-
+    this.titleService.setTitle('Nuevo artículo | MYKELT');
   }
 
 

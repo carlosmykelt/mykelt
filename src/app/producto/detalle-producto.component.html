@@ -1,4 +1,5 @@
 <app-menu></app-menu>
+<div class="wrapper">
 
 <div class="container  text-center mt-5 ">
   <span class="" id=""></span>
@@ -9,21 +10,7 @@
  </div> -->
 
 
-<!-- <div *ngIf="producto" class="py-5">
-  <div class="container my-4 py-4 px-md-3">
-    <div class="card shadow">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><b>Name: </b>{{producto.name}}</li>
-        <li class="list-group-item"><b>Price: </b>{{producto.metadata.price}}</li>
-      </ul>
-      
-      <div class="card-footer bg-white">
-        <a class="linkmin btn btn-block" routerLink="/lista"> Volver </a>
-      </div>
-    </div>
 
-  </div>
-</div> -->
 
 <!-- Si aún no se ha cargado, muestra el spinner -->
 <div *ngIf="cargado==false" class="text-center my-5">
@@ -120,4 +107,6 @@
   </div>
 </div>
 
+
+</div>
 <app-footer></app-footer>

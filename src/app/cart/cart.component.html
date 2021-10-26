@@ -1,17 +1,10 @@
 <app-menu></app-menu>
-
-<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%"
-  id="blobSvg">
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color: rgb(238, 182, 51);"></stop>
-      <stop offset="100%" style="stop-color: rgb(255, 255, 255);"></stop>
-    </linearGradient>
-  </defs>
-  <path id="blob"
-    d="M429,337Q389,424,293,453Q197,482,120,416Q43,350,37,247.5Q31,145,116.5,93Q202,41,300.5,52Q399,63,434,156.5Q469,250,429,337Z"
-    fill="url(#gradient)"></path>
-</svg>
+<div class="wrapper">
+  <!-- <div class="col-lg-5" *ngFor="let cartProduct of cartProducts" [style.max-width.px]="400"></div> -->
+  <!-- *ngIf="!cartProducts" -->
+  <div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border corner shadow-lg py-5 px-md-5" *ngIf="isLogged && cargado==false">
+    <p class="h2">No tienes productos en el carrito</p>
+  </div>
 
 <div class="container my-5 col-11 col-sm-7 justify-content-center bg-white border corner shadow-lg py-5 px-md-5"
   *ngIf="!isLogged">
@@ -19,6 +12,7 @@
     <p class="display-4 bold600 text-center ">Cesta</p>
     <!-- <p class="h1 font-weight-bold"> Cesta </p> -->
   </div>
+
 
   <div class="container d-flex justify-content-center mt-3">
 
@@ -78,7 +72,7 @@
               <div class="mt-3">
      
                 <label class="containerBox">
-                  <input type="checkbox" [(ngModel)]="cartProduct.livemode"  (ngModelChange)="boxChange(cartProduct.metadata.price, cartProduct.quantity, cartProduct.livemode)">
+                  <input type="checkbox" [(ngModel)]="!cartProduct.livemode"  (ngModelChange)="boxChange(cartProduct.metadata.price, cartProduct.quantity, cartProduct.livemode)">
                   <span class="checkmark"></span>
                 </label>
 
@@ -173,4 +167,5 @@
 </div>
 </div>
 
-<!-- <app-footer></app-footer> -->
+</div>
+<app-footer></app-footer>

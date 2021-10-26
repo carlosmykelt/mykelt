@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NuevoUsuario } from '../models/nuevo-usuario';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registro',
@@ -29,14 +30,16 @@ export class RegistroComponent implements OnInit {
 
   confirmation: boolean = false;
 
-  private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  // private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private titleService: Title 
+
   ) {
     // this.registerForm = this.createForm();
 
@@ -45,6 +48,8 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.titleService.setTitle('Registro | MYKELT');
   }
 
   // get Name() { return this.registerForm.get('name'); }

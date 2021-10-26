@@ -3,6 +3,7 @@ import { ProductoService } from '../service/producto.service';
 import { Producto } from '../models/producto';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -17,7 +18,8 @@ export class NuevoProductoComponent implements OnInit {
   constructor(
     private productoService: ProductoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { 
 
     // Popover que uso para informar al usuario del lugar donde se encuentra el ID de los vídeos de Youtube
@@ -30,6 +32,7 @@ export class NuevoProductoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Nuevo producto | MYKELT');
   }
 
   //Crear uno nuevo

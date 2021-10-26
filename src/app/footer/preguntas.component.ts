@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-preguntas',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreguntasComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private titleService: Title, 
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Preguntas | MYKELT');
   }
 
 }

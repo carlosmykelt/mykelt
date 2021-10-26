@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
 import { PostService } from '../service/post.service';
@@ -16,11 +18,21 @@ export class ListaPostComponent implements OnInit {
   totalLength: any;
   page:number = 1;
 
-  constructor(private tokenService: TokenService, private postService: PostService, private toastr: ToastrService) { }
+  constructor(private tokenService: TokenService, private postService: PostService, private toastr: ToastrService, private titleService: Title, public router: Router) { }
 
   ngOnInit() {
 
+    if(this.router.url === '/blog'){
+      this.titleService.setTitle('Blog | MYKELT');
+    }
+
+
     this.cargarPosts();
+  }
+
+  onPageChange(page: number){
+    this.page = page;
+    window.scrollTo(0, 0);
   }
 
   cargarPosts() :void{

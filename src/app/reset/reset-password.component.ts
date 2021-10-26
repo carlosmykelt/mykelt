@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { TokenService } from '../service/token.service';
 import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reset-password',
@@ -22,10 +23,12 @@ export class ResetPasswordComponent implements OnInit {
     private tokenService: TokenService,
     private resetService: ResetService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Restablecer contraseña | MYKELT');
   }
 
   restore(){

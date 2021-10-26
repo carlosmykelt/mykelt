@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../models/post';
 import { PostService } from '../service/post.service';
@@ -15,10 +17,14 @@ export class AdminPanelComponent implements OnInit {
 
   // isAdmin: number = window.localStorage.role;
 
-  constructor(private postService: PostService, private toastr: ToastrService) { }
+  constructor(private postService: PostService, private toastr: ToastrService,
+    private titleService: Title, 
+    public router: Router) { }
 
   ngOnInit() {
 
+    this.titleService.setTitle('Dashboard | MYKELT');
+    
     this.cargarPosts();
   }
 
