@@ -15,25 +15,25 @@ export class AdminPanelComponent implements OnInit {
 
   posts: Post[] = [];
 
-  // isAdmin: number = window.localStorage.role;
+
 
   constructor(private postService: PostService, private toastr: ToastrService,
-    private titleService: Title, 
+    private titleService: Title,
     public router: Router) { }
 
   ngOnInit() {
 
     this.titleService.setTitle('Dashboard | MYKELT');
-    
+
     this.cargarPosts();
   }
 
-  cargarPosts() :void{
+  cargarPosts(): void {
 
     this.postService.lista().subscribe(
-      data =>{
-        this.posts = data; // lo carga en el Array que hemos creado, llamado posts
-      }, 
+      data => {
+        this.posts = data; // lo carga en el Array creado, llamado posts
+      },
       err => {
         console.log(err);
       }
@@ -41,7 +41,7 @@ export class AdminPanelComponent implements OnInit {
 
   }
 
-  borrar(id: number){
+  borrar(id: number) {
 
     this.postService.delete(id).subscribe(
       data => {

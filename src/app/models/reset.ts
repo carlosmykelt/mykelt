@@ -4,7 +4,6 @@ export class Reset {
     token: string;
     password: string;
 
-
     constructor(email: string, token: string, password: string) {
         this.email = email;
         this.token = token;

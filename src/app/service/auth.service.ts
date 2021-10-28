@@ -23,9 +23,9 @@ export class AuthService {
     return this.httpClient.post<JwtDTO>(this.authURL + 'login', loginUsuario);
   }
 
-    // Access user profile
-    profileUser(): Observable<any> {
-      return this.httpClient.get(this.authURL + 'user');
-    }
+  // Access user profile
+  profileUser(): Observable<any> {
+    return this.httpClient.get(this.authURL + 'user');
+  }
 
 }

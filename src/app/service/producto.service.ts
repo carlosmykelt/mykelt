@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ProductoService {
 
   productoURL = 'http://127.0.0.1/api/products';
-  
+
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<any> {

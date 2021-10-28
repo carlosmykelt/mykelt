@@ -20,15 +20,8 @@ export class NuevoProductoComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private titleService: Title
-  ) { 
+  ) {
 
-    // Popover que uso para informar al usuario del lugar donde se encuentra el ID de los vídeos de Youtube
-    $(document).ready(function () {
-      (<any>$('[data-toggle="popover"]')).popover({
-        placement: 'top',
-        trigger: 'hover'
-      });
-    });
   }
 
   ngOnInit() {

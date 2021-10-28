@@ -9,8 +9,6 @@ import { LoginComponent } from './auth/login.component';
 import { RegistroComponent } from './auth/registro.component';
 import { AdminGuardService } from './guards/admin-guard.service';
 
-
-
 import { LoginGuard } from './guards/login.guard';
 import { ListaPostComponent } from './post/lista-post.component';
 import { NuevoPostComponent } from './post/nuevo-post.component';
@@ -37,15 +35,6 @@ const routes: Routes = [
   { path: 'formulario-restablecer', component: ResetFormComponent },
 
 
-  // component: ListaProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] }
-
- 
-  // , canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } 
-  
-
-  // { path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
-  // { path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: { expectedRol: ['admin', 'user'] } },
-  
   { path: 'setupcard', component: SetupCardComponent },
 
   { path: 'cart', component: CartComponent },
@@ -60,7 +49,7 @@ const routes: Routes = [
   { path: 'blog/:id', component: FullPostComponent },
 
   { path: 'productos', component: ListaProductoComponent },
-  { path: 'productos/:idProduct', component: DetalleProductoComponent},
+  { path: 'productos/:idProduct', component: DetalleProductoComponent },
 
 
   // { path: 'atribuciones', component: AtribucionesComponent },
@@ -70,13 +59,9 @@ const routes: Routes = [
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
-// Volver a poner dentro del forRoote si no funciona. Después de routes, 
-// { relativeLinkResolution: 'legacy' },
-
-// { useHash: true
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy'})],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

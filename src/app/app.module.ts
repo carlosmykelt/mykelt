@@ -39,19 +39,12 @@ import { ResetFormComponent } from './reset/reset-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminPanelComponent } from './admin/admin-panel.component';
 
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AtribucionesComponent } from './footer/atribuciones.component';
 import { PreguntasComponent } from './footer/preguntas.component';
 import { ContactoComponent } from './footer/contacto.component';
 
 
-// import { HashLocationStrategy, LocationStrategy } from '@angular/common';  // Angular rutas
-
-
-
-
-// import * as bootstrap from "bootstrap";
-// import * as $ from "jquery";
 
 registerLocaleData(localeEs, 'es');
 
@@ -87,11 +80,11 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-    progressBar: true,
-    progressAnimation: 'increasing',
-    preventDuplicates: true,
-    positionClass: 'toast-bottom-right',
-    // closeButton: true
+      progressBar: true,
+      progressAnimation: 'increasing',
+      preventDuplicates: true,
+      positionClass: 'toast-bottom-right',
+      // closeButton: true
     }),
     HttpClientModule,
     FormsModule,
@@ -105,9 +98,7 @@ registerLocaleData(localeEs, 'es');
     interceptorProvider,
     DecimalPipe, //Para poner decimales con el sistema europeo
 
-    // { provide: LocationStrategy, useClass: HashLocationStrategy }, //Rutas angular
-
-    { provide: LOCALE_ID, useValue: 'es' },  // El de España
+    { provide: LOCALE_ID, useValue: 'es' },
 
   ],
   bootstrap: [AppComponent]

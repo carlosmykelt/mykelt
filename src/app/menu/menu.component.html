@@ -1,15 +1,11 @@
-<div class="container" >
+<div class="container">
 
   <nav class="navbar navbar-expand-lg navbar-light  mx-lg-5 border-bottom" [style.max-width.px]="2000">
 
-
-          <a class="menulink  bold600" href="">
-            <!-- <img src="favicon.ico" class="img-fluid" style="max-width: 25px;"> -->
-
-            &nbsp;
-            <span class="mykelt bold600">MYKELT </span> 
-            </a>
-  
+    <a class="menulink  bold600" href="">
+      &nbsp;
+      <span class="mykelt bold600">MYKELT </span>
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +26,6 @@
           </a>
         </li>
 
-
-        <!-- !isLogged -->
         <li class="nav-item" *ngIf="!isLogged">
           <a class=" py-3" routerLink="/login">
             <div class="btn btn-dark py-2 px-4 mx-4 shadow my-2 corner bold600">Identifícate</div>
@@ -45,33 +39,21 @@
           </a>
         </li>
 
-
-        <!-- !isLogged -->
-        <!-- <li class="nav-item" *ngIf="!isLogged">
-          <a class="p-3 menulink" routerLink="/registro">
-          
-            <div class="btn btn-dark py-2 px-4 shadow my-2 corner bold600">Registrarse </div>
-          </a>
-        </li> -->
-        <!-- isLogged -->
         <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
           <a class="p-3 menulink">
-            <div class="btn btn-dark py-2 px-4 mx-4 shadow my-2 corner bold600"><i class="fas fa-power-off"></i>&nbsp;Cerrar Sesión</div>
+            <div class="btn btn-dark py-2 px-4 mx-4 shadow my-2 corner bold600"><i
+                class="fas fa-power-off"></i>&nbsp;Cerrar Sesión</div>
           </a>
         </li>
 
         <li class="nav-item">
           <a class=" p-3     btn menulink my-2 bold600" routerLink="/cart">
-           
-              <i class="fas fa-shopping-cart"  style="font-size: 1.5rem;"></i>
-              <!-- Cesta           -->
-          </a>
-          
-        </li>
 
+            <i class="fas fa-shopping-cart" style="font-size: 1.5rem;"></i>
+
+          </a>
+        </li>
       </ul>
     </div>
-
   </nav>
-
 </div>

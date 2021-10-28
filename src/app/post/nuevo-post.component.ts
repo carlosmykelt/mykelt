@@ -5,14 +5,8 @@ import { post } from 'jquery';
 import { Post } from '../models/post';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
-//import { CKEditorComponent, CKEditorModule } from 'ckeditor4-angular';
-
 import { DomSanitizer, Title } from '@angular/platform-browser';
-
 import * as customEditor from './../build2/ckeditor';
-
-// import * as customEditor from './../ckCustomBuild/build/ckeditor';
 
 
 
@@ -24,7 +18,7 @@ import * as customEditor from './../build2/ckeditor';
 export class NuevoPostComponent implements OnInit {
 
   public Editor = customEditor;
-  
+
   name = '';
   header = '';
   body = 'Escribe aquí el cuerpo del artículo';
@@ -36,16 +30,8 @@ export class NuevoPostComponent implements OnInit {
   portada: File = null;
 
   public config = {
-  //   alignment: {
-  //     options: [ 'left', 'center', 'right' ]
-  // },
-  //   toolbar: [ 'heading', '|', 'bold', 'italic', 'underline', 'Highlight', 'Link', 'Alignment',
-  // 'fontColor', 'Table', 'List', 'BlockQuote', 'Image', 'HtmlComment', 'ImageUpload', 'ImageToolbar', 'ImageStyle', 
-  // 'ImageCaption', 'custombutton' ],
 
-    // // This value must be kept in sync with the language defined in webpack.config.js.
-    // language: 'en'
-};
+  };
 
 
 
@@ -53,34 +39,33 @@ export class NuevoPostComponent implements OnInit {
     private router: Router, private sanitizer: DomSanitizer,
     private titleService: Title) {
 
-      console.log(this.name);
-      
-     }
+    console.log(this.name);
+
+  }
 
   ngOnInit() {
     this.titleService.setTitle('Nuevo artículo | MYKELT');
   }
 
 
-  captura(event): any{
+  captura(event): any {
 
-           // console.log(event.target.files); // la img se encuentra dentro de target.files
 
-           const archivoCapturado = <File>event.target.files[0];
-           
-           this.extraerBase64(archivoCapturado).then((imagen: any) => {
-               this.previsualizacion = imagen.base; // en esta variable almacenamos la codificación de la imagen, base64
-               console.log(imagen);
-             });
-           
-       
 
-             this.portada = archivoCapturado;
-      //     this.archivos.push(archivoCapturado); // En el array creado, incluímos la imagen
+    const archivoCapturado = <File>event.target.files[0];
+
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base; // en esta variable almacenamos la codificación de la imagen, base64
+      console.log(imagen);
+    });
+
+
+    this.portada = archivoCapturado;
+
 
   }
 
-  crea(): void{
+  crea(): void {
 
     const fd = new FormData();
     fd.append('name', this.name);
@@ -107,7 +92,7 @@ export class NuevoPostComponent implements OnInit {
 
 
 
-   
+
   // // El evento que le pasamos, crea una función tipo file, la lee y nos devuelve el base64
   extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
     try {

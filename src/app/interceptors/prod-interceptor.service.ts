@@ -13,18 +13,14 @@ export class ProdInterceptorService implements HttpInterceptor { // Implementa e
 
   constructor(private tokenService: TokenService) { } // Inyectamos el tokenservice
 
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  
 
     let intReq = req; // Es req interceptado, por eso el int
 
     const token = this.tokenService.getToken();
 
+    if (token != null) { // si el token no es nulo
 
-    if (token != null ) { // si no es nulo
-
-  
       intReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
       // intreq va a ser igual a req, le pasamos la autorización, el bearer y el token
     }

@@ -16,34 +16,38 @@ export class ListaPostComponent implements OnInit {
   posts: Post[] = [];
 
   totalLength: any;
-  page:number = 1;
+  page: number = 1;
 
   constructor(private tokenService: TokenService, private postService: PostService, private toastr: ToastrService, private titleService: Title, public router: Router) { }
 
   ngOnInit() {
 
-    if(this.router.url === '/blog'){
+    if (this.router.url === '/blog') {
       this.titleService.setTitle('Blog | MYKELT');
+    }
+
+    if (this.tokenService.isLogged()) {
+      this.tokenService.timeToken();
     }
 
 
     this.cargarPosts();
   }
 
-  onPageChange(page: number){
+  onPageChange(page: number) {
     this.page = page;
     window.scrollTo(0, 0);
   }
 
-  cargarPosts() :void{
+  cargarPosts(): void {
 
     this.postService.lista().subscribe(
-      data =>{
+      data => {
         this.posts = data; // lo carga en el Array que hemos creado, llamado posts
 
         this.totalLength = data.length;
 
-      }, 
+      },
       err => {
         console.log(err);
       }
@@ -51,7 +55,7 @@ export class ListaPostComponent implements OnInit {
 
   }
 
-  borrar(id: number){
+  borrar(id: number) {
 
     this.postService.delete(id).subscribe(
       data => {

@@ -1,25 +1,13 @@
-
-
-<!-- 
-<input id="card-holder-name" type="text"> 
-
-
-<div id="card-element"></div>
-
-<button id="card-button" data-secret="{{ $intent->client_secret }}">
-    Update Payment Method
-</button> -->
-
 <div class="container mt-5">
 
-<input id="card-holder-name" type="text">
+    <input id="card-holder-name" type="text">
 
-<!-- Stripe Elements Placeholder -->
-<div id="card-element"></div>
+    <!-- Stripe Elements Placeholder -->
+    <div id="card-element"></div>
 
-<button id="card-button">
-    Process Payment
-</button>
+    <button id="card-button">
+        Process Payment
+    </button>
 
 </div>
 
@@ -41,18 +29,16 @@
     const cardButton = document.getElementById('card-button');
 
     cardButton.addEventListener('click', async (e) => {
-    const { paymentMethod, error } = await stripe.createPaymentMethod(
-        'card', cardElement, {
+        const { paymentMethod, error } = await stripe.createPaymentMethod(
+            'card', cardElement, {
             billing_details: { name: cardHolderName.value }
         }
-    );
+        );
 
-    if (error) {
-        // Display "error.message" to the user...
-    } else {
-        // The card has been verified successfully...
-    }
-});
+        if (error) {
+            // Display "error.message" to the user...
+        } else {
+            // The card has been verified successfully...
+        }
+    });
 </script>
-
-

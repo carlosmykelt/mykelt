@@ -8,8 +8,8 @@ import { TokenService } from '../service/token.service';
 import { Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 
-  //Prueba stripe
-  declare var Stripe : any;
+//Prueba stripe
+declare var Stripe: any;
 
 
 @Component({
@@ -33,9 +33,8 @@ export class CartComponent implements OnInit {
 
   livemode: boolean = false;
 
-  // units: number = [];
 
-  //Prueba para calcular precio
+  // Calcular precio
   ShowPrice: number;
   Sumaprecios: any[] = [];
   PrecioTotal: number = 0;
@@ -50,18 +49,13 @@ export class CartComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private tokenService: TokenService,
-    private titleService: Title,
-    // private env: environment
-
+    private titleService: Title
   ) { }
-
 
 
   ngOnInit(): void {
 
     this.titleService.setTitle('Cesta | MYKELT');
-
-
 
     this.isLogged = this.tokenService.isLogged();
 
@@ -69,74 +63,28 @@ export class CartComponent implements OnInit {
 
     this.cargarCarrito();
 
-
-
-
-
   }
 
-  boxChange(price: number, quantity: number, check: boolean){
+  boxChange(price: number, quantity: number, check: boolean) {
     //Comprueba si este producto tiene el check
-    //Si lo tiene, usa el método totalprice para añadirlo
+    //Si lo tiene, usa el método totalprice para calcular el precio
     //Si no lo tiene, no lo añadas
-// price
 
-    
+    if (check) { // Si hay check...
 
-    if(check){
-
-     //Identifica el elemento del array cartProducts
-     //Ponle livemode o check true
-
-     console.log('check si');
-     console.log('imprme cartproduct');
-     console.log(this.cartProducts);
-     
-     
-
-    //  for(let cartProduct of this.cartProducts){
-    //   if(cartProduct.id == productId){
-        
-    //     cartProduct.livemode == true;
-    //     console.log('imprimo livemode');
-    //     console.log(cartProduct.livemode);
-    //   }
-    // }
-
-
-      
       this.TotalPrice(price, quantity)
-    }else{
-
-      console.log('check no');
-
-      // for(let cartProduct of this.cartProducts){
-      //   if(cartProduct.id == productId){
-          
-      //     cartProduct.livemode == false;
-      //     console.log('imprimo livemode');
-      //     console.log(cartProduct.livemode);
-          
-      //   }
-      // }
-
-      console.log(this.cartProducts);
+    } else { // Si quita el check, resta el precio*cantidad al precio total
 
       this.RemoveOfTotalPrice(price, quantity)
-      
+
     }
   }
 
 
-  TotalPrice(precio, cantidad) {
+  TotalPrice(precio, cantidad) { // Método para calcular el precio total
 
     // Modificamos la variable que muestra el precio total
     this.PrecioTotal = this.PrecioTotal + (Number(precio) * Number(cantidad))
-
-    // this.PrecioTotalDecimal = this.DecimalPipe.transform(this.PrecioTotal, "1.2-2", 'es')
-
-    console.log('tiene el precio?')
-    console.log(this.PrecioTotal)
 
   }
 
@@ -144,8 +92,6 @@ export class CartComponent implements OnInit {
 
     // Modificamos la variable que muestra el precio total
     this.PrecioTotal = this.PrecioTotal - (Number(precio) * Number(cantidad))
-
- 
 
   }
 
@@ -156,42 +102,24 @@ export class CartComponent implements OnInit {
         this.carrito = data; // Nos devuelve el cart de la db
 
         this.Sumaprecios = data;
-        console.log('Este es el carrito: ')
-        console.log(this.carrito);
 
-        //    this.cargando = false;
-
-        // Lo recorremos para sacar el nombre, precio. Además, añadimos a este array el quantity y el id.
+        // Lo recorremos para sacar el nombre y precio. Además, añadimos a este array el quantity y el id.
         // Para sacar el nombre y precio, es necesario hacer un subscribe a produtoService.detail
 
-       
-
         for (let nombre of this.carrito) {
-        
 
           const idp = nombre.idProduct;
 
           this.productoService.detail(idp).subscribe(
             data => {
 
-            
               data.quantity = nombre.quantity;
               data.idDB = nombre.id;
               data.select = false;
-           
 
               this.cartProducts.push(data);   // Tenemos un array con todos los datos de la API + quantity + nombre
 
-
               this.PrecioTotal = 0;
-              // this.TotalPrice(data.metadata.price, data.quantity);  Comentamos esta para ponerla en el check
-
-              // // Modificamos la variable que muestra el precio total
-              // this.PrecioTotal = this.PrecioTotal + (Number(data.metadata.price) * Number(data.quantity))
-
-              // console.log('tiene el precio?')
-              // console.log(this.PrecioTotal)
-
 
             },
             err => {
@@ -201,28 +129,21 @@ export class CartComponent implements OnInit {
 
             }
           );
-
           this.cargado = true;
-
-
         }
-
       },
       err => {
         console.log(err);
       }
     );
-
   }
 
 
 
   resta(idproduct: string, quantity: number) {
 
-
-
     // quiero coger el array cartProducts, acceder al producto indicado y restarle/sumarle una unidad
-    // Esto lo hago para que se muestre la modificación de la unidad directamente
+    // Esto lo hago para que se muestre la modificación de la unidad directamente en la vista
 
     quantity = quantity - 1;
 
@@ -238,7 +159,6 @@ export class CartComponent implements OnInit {
     const cart = new Cart(idproduct, 'pruebaid', quantity);
     this.cartService.save(cart).subscribe(
       data => {
-
 
       },
       err => {
@@ -258,32 +178,22 @@ export class CartComponent implements OnInit {
   PrecioResta(idproduct) {
     this.productoService.detail(idproduct).subscribe(
       data => {
-
-
-        
-
-        // this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);   // Restamos 1 al precio total
-
-        console.log('Con la resta sería: ' + this.PrecioTotal)
-
         //Modificamos el array que se enviará al checkout
-       for (let cart of this.carrito) {
-     
-         if(cart.idProduct == idproduct){
-           cart.quantity = cart.quantity - 1
-         }
-      }
+        for (let cart of this.carrito) {
+
+          if (cart.idProduct == idproduct) {
+            cart.quantity = cart.quantity - 1
+          }
+        }
 
 
-    // Recorremos el producto. Si el id coincide y además, el check es true, restamos al cuadro del precio
-    for(let cartProduct of this.cartProducts){
-      if(cartProduct.id == idproduct && cartProduct.select == true){
-        //Resta al cuadro, el precio*quantity
-        this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);
-      }
-
-    }
-
+        // Recorremos el producto. Si el id coincide y además, el check es true, restamos al cuadro del precio
+        for (let cartProduct of this.cartProducts) {
+          if (cartProduct.id == idproduct && cartProduct.select == true) {
+            //Resta al cuadro, el precio*quantity
+            this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);
+          }
+        }
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
@@ -297,7 +207,7 @@ export class CartComponent implements OnInit {
 
   suma(idproduct: string, quantity: number) {
 
-    // Muestra directamente en la vista el cambio de las unidades
+    // Muestra directamente en la vista el cambio de las unidades. Sumamos una.
 
     quantity = quantity + 1;
 
@@ -311,10 +221,7 @@ export class CartComponent implements OnInit {
     const cart = new Cart(idproduct, 'pruebaid', quantity);
     this.cartService.save(cart).subscribe(
       data => {
-        // this.toastr.success('Añadido a carrito', '', {
-        //   timeOut: 3000
-        // });
-        // this.router.navigate(['/productos']);
+
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
@@ -324,43 +231,37 @@ export class CartComponent implements OnInit {
       }
     );
 
-
-
     this.PrecioSuma(idproduct); // Método para modificar las unidades que se enviarán al checkout y el precio de la vista
   }
 
 
   PrecioSuma(idproduct) {
-  
+
     console.log(this.carrito);
     this.productoService.detail(idproduct).subscribe(
       data => {
 
-       //Modificamos el array que se enviará al checkout
-       for (let cart of this.carrito) {
-        
-          if(cart.idProduct == idproduct){
+        //Modificamos el array que se enviará al checkout
+        for (let cart of this.carrito) {
+
+          if (cart.idProduct == idproduct) {
             cart.quantity = cart.quantity + 1
           }
-       }
-
-       // Recorremos el producto. Si el id coincide y además, el check es true, sumamos al cuadro del precio
-       for(let cartProduct of this.cartProducts){
-        if(cartProduct.id == idproduct && cartProduct.select == true){
-          //Suma al cuadro, el precio*quantity
-          this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);
         }
-  
-      }
+
+        // Recorremos el producto. Si el id coincide y además, el check es true, sumamos al cuadro del precio
+        for (let cartProduct of this.cartProducts) {
+          if (cartProduct.id == idproduct && cartProduct.select == true) {
+            //Suma al cuadro, el precio*quantity
+            this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);
+          }
+        }
 
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000
         });
-
-    
-
       }
     );
   }
@@ -372,53 +273,28 @@ export class CartComponent implements OnInit {
     for (let cart of this.carrito) {
 
       // Por cada registro del carrito, probamos todos los cartproducts
-      for (let cartProduct of this.cartProducts){
-        if(cartProduct.idDB == cart.id){
-          console.log(cartProduct.idDB + ' ES IGUAL A ' + cart.id);
-          
-          if(cartProduct.select == true){
-            console.log('ADEMÁS DE IGUAL, EL CHECK ES TRUE');
-            
+      for (let cartProduct of this.cartProducts) {
+        if (cartProduct.idDB == cart.id) {
+
+          if (cartProduct.select == true) {
+
             this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
-          }else{
-            console.log(cartProduct.idDB + 'ERA IGUAL PERO NO ERA TRUE');
-            
+          } else {
           }
-          
         }
       }
-      
-      //Ve al cartProducts cuyo idDB es el id de carrito  --> bucle cartProducts, if idDB igual a cart.id. Continúa
-      // if cartProducts.check es true, continúa -> hacemos el push
-      
-
-
-      // this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
     }
 
-    console.log('imprimimos el pricesarray')
-    //console.log(this.PricesArray)
-
-    this.checkout(this.PricesArray)
-
+    this.checkout(this.PricesArray)  // Se lo pasamos al método que utilizamos para el checkout
   }
 
 
   priceId() {
 
-    // console.log(productoId)
-
     for (let cart of this.cartProducts) {
-
-
-      // console.log(cart.id)
 
       this.productoService.price(cart.id).subscribe(
         data => {
-          // this.precio = data; // lo carga en el Array que hemos creado, llamado productos
-
-
-          // console.log(this.price.data[0].id);
 
           cart.idPrice = data[0].id;
 
@@ -426,13 +302,11 @@ export class CartComponent implements OnInit {
 
         },
         err => {
-          console.log(err);
         }
       );
-
-
     }
-    this.checkout(this.PricesArray)
+
+    this.checkout(this.PricesArray) // Se lo pasamos al método que utilizamos para el checkout
 
   }
 
@@ -441,66 +315,34 @@ export class CartComponent implements OnInit {
   pruebaArray() {
     let cartArray: any[] = [];
     cartArray.push({ price: 'price_1JRykpEDzo7bolN0pL6nAUjv', quantity: 1 }, { price: 'price_1JRwekEDzo7bolN0BFSLdzXs', quantity: 1 })
-    console.log('imprimimos el cartArray')
-    console.log(cartArray)
 
-    //  this.checkout(cartArray);
-    // console.log(pricesArray)
   }
 
 
-  checkout(pricesArray) {
+  checkout(pricesArray) { // Método que utilizamos para redireccionarlo al checkout de Stripe
 
-    // console.log(pricesArray)
-
-    // console.log('llega a función checkout y el id es: ' + PriceId)
     var stripe = Stripe(environment.stripeId);
 
-    // var checkoutButton = document.getElementById('checkout-button-price_1JRykpEDzo7bolN0pL6nAUjv');
-    // checkoutButton.addEventListener('click', function () {
-    /*
-     * When the customer clicks on the button, redirect
-     * them to Checkout.
-     */
-
-
     stripe.redirectToCheckout({
-      lineItems: pricesArray
-      // [
-      //   {price: 'price_1JRykpEDzo7bolN0pL6nAUjv', quantity: 1},
-      //   {price: 'price_1JRwekEDzo7bolN0BFSLdzXs', quantity: 1}
-      // ]
-      ,
-      //Esto sería la dirección de la tarjeta, de momento no la necesito
-      // billingAddressCollection: 'required', 
+      lineItems: pricesArray,
+
       shippingAddressCollection:
       {
         allowedCountries: ['ES', 'US', 'CH', 'DE', 'GB', 'NZ'],
       },
       mode: 'payment',
-      /*
-       * Do not rely on the redirect to the successUrl for fulfilling
-       * purchases, customers may not always reach the success_url after
-       * a successful payment.
-       * Instead use one of the strategies described in
-       * https://stripe.com/docs/payments/checkout/fulfill-orders
-       */
-      // successUrl: window.location.protocol + '//http://localhost:4200/productos',
-      // cancelUrl: window.location.protocol + '//http://localhost:4200/cart',
       successUrl: environment.dominio + 'productos',
       cancelUrl: environment.dominio + 'cart',
     })
       .then(function (result) {
         if (result.error) {
           /*
-           * If `redirectToCheckout` fails due to a browser or network
-           * error, display the localized error message to your customer.
+           * Si la redirección al checout falla, muestra el siguiente mensaje 
            */
           var displayError = document.getElementById('error-message');
           displayError.textContent = result.error.message;
         }
       });
-    // });
   }
 
 
@@ -513,8 +355,6 @@ export class CartComponent implements OnInit {
         });
         this.cargarCarrito();
         window.location.reload();
-
-
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
@@ -523,7 +363,5 @@ export class CartComponent implements OnInit {
       }
     );
   }
-
-
 
 }

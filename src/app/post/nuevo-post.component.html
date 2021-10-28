@@ -1,75 +1,60 @@
 <app-menu></app-menu>
 <div class="wrapper">
 
-<div class="py-5">
-    <!-- col-lg-4 -->
-    <!-- border rounded shadow-->
-    <div class=" container col-lg-7 bg-white  my-5 py-4 px-3 ">
-        <!-- onCreate() -->
-        <form (ngSubmit)="crea()" novalidate #f="ngForm">
+    <div class="py-5">
+
+        <div class=" container col-lg-7 bg-white  my-5 py-4 px-3 ">
+
+            <form (ngSubmit)="crea()" novalidate #f="ngForm">
+
+                <div class="form-group">
 
 
-            <div class="form-group">
-                <!-- capturarFile($event) -->
-                
-                <input (change)="captura($event)" type="file">  
-                <!-- Change detecta cuando el input tiene un cambio.
+                    <input (change)="captura($event)" type="file">
+                    <!-- Change detecta cuando el input tiene un cambio.
                 Le ponemos la función capturar con el parámetro evento -->
-            </div>  
+                </div>
 
-            <div *ngIf="previsualizacion">
-                <img width="500px" [src]="previsualizacion" alt="">
-            </div>
-            
-
-            <div class="form-group">
-                <!-- <label for="name">Nombre</label> -->
-                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required placeholder="Escribe aquí el nombre">
-            </div>
-
-            <div class="form-group">
-                
-                <input type="text" class="form-control" id="header" name="header" [(ngModel)]="header" required placeholder="Escribe aquí el header">
-            </div>
-
-            <div class="form-group mt-5">
-                
-                <!-- <label class="my-4" for="body">Cuerpo del artículo</label> -->
-                <!-- class="form-control" -->
-
-                <!-- ESTE ES EL ANTERIOR, QUE ESTABA BIEN -->
-                <!-- <ckeditor  data="<p>Hello, world!</p><br>hello" type="inline" [config]="{ extraPlugins: 'divarea' }" [(ngModel)]="body" name="body" ></ckeditor> -->
-                <!-- ESTE ES EL ANTERIOR, QUE ESTABA BIEN -->
-
-                <ckeditor id="editor" [editor]="Editor" [config]='config' data="<p>Hello, world!</p>" [(ngModel)]="body" name="body"></ckeditor>
+                <div *ngIf="previsualizacion">
+                    <img width="500px" [src]="previsualizacion" alt="">
+                </div>
 
 
-            </div> 
+                <div class="form-group">
 
-            <!-- <div class="form-group">
-                <label for="body">Cuerpo del artículo</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required
+                        placeholder="Escribe aquí el nombre">
+                </div>
 
+                <div class="form-group">
 
+                    <input type="text" class="form-control" id="header" name="header" [(ngModel)]="header" required
+                        placeholder="Escribe aquí el header">
+                </div>
 
-                <input type="textarea" class="form-control" id="body" name="body" [(ngModel)]="body" required>
-            </div>             -->
-        
-            <div class="d-flex justify-content-around mt-5">
-            <a class="linkmin btn" routerLink="/admin"> Volver </a>
-            <button class="btn btn-dark corner bold600 px-5" [disabled]="!f.valid">
-                <!-- <i class="fas fa-plus-circle"></i>  -->
-                Crear
-            </button>
-            </div>
+                <div class="form-group mt-5">
 
 
+                    <ckeditor id="editor" [editor]="Editor" [config]='config' data="<p>Hello, world!</p>"
+                        [(ngModel)]="body" name="body"></ckeditor>
 
 
-        </form>
+                </div>
 
 
+                <div class="d-flex justify-content-around mt-5">
+                    <a class="linkmin btn" routerLink="/admin"> Volver </a>
+                    <button class="btn btn-dark corner bold600 px-5" [disabled]="!f.valid">
+
+                        Crear
+                    </button>
+                </div>
+
+            </form>
+
+
+        </div>
     </div>
-</div>
 
 </div>
 <app-footer></app-footer>

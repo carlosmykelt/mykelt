@@ -23,8 +23,6 @@ export class DetalleProductoComponent implements OnInit {
 
   cargado: boolean = false;
 
-  // producto: Producto = null;
-
   cargando: boolean = true;
 
   isLogged = false;  // variable de si está logueado
@@ -53,7 +51,7 @@ export class DetalleProductoComponent implements OnInit {
 
     this.productoService.detail(id).subscribe(
       data => {
-  
+
         this.producto = data;
 
         console.log('imprimiendo detalles')
@@ -71,7 +69,6 @@ export class DetalleProductoComponent implements OnInit {
       }
     );
 
-
   }
 
 
@@ -80,33 +77,27 @@ export class DetalleProductoComponent implements OnInit {
   }
 
 
-  resta(){
- 
-    this.quantity = this.quantity-1;
+  resta() {
 
-
-  }
-
-
-  suma(){
-
-    this.quantity = this.quantity+1;
+    this.quantity = this.quantity - 1;
 
   }
 
 
+  suma() {
 
-  
-  addCart(productoId: string, quantity: number){   // TIENE QUE RECIBIR EL PRODUCTID Y EL QUANTITY
+    this.quantity = this.quantity + 1;
 
-    console.log('Este es el producto id: ' + productoId);
-    console.log('Esta es la cantidad: ' + quantity);
+  }
 
+
+
+
+  addCart(productoId: string, quantity: number) {
 
 
     this.productoService.price(productoId).subscribe(
       data => {
-      
 
         console.log('imprimimos price');
         console.log(data.data[0].id);
@@ -114,9 +105,6 @@ export class DetalleProductoComponent implements OnInit {
         let idprice = data.data[0].id;
 
         this.crear(productoId, idprice, quantity);
-        
-
-      //  this.checkout(PriceId);
 
       },
       err => {
@@ -124,12 +112,10 @@ export class DetalleProductoComponent implements OnInit {
       }
     );
 
-
-
   }
 
 
-  crear(productoId, idprice, quantity){
+  crear(productoId, idprice, quantity) {
 
     const cart = new Cart(productoId, idprice, quantity);
     this.cartService.save(cart).subscribe(
@@ -137,37 +123,22 @@ export class DetalleProductoComponent implements OnInit {
         this.toastr.success('Añadido a la cesta', '', {
           timeOut: 3000
         });
-     
+
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
           timeOut: 3000
         });
-
       }
     );
-
   }
 
-    // ------- COMENTO ESTOS DOS MÉTODOS, QUE IRÁN EN EL COMPONENTE DEL CARRITO ------
 
-  priceId(productoId: string){
 
-    // console.log(productoId)
+  priceId(productoId: string) {
 
     this.productoService.price(productoId).subscribe(
       data => {
-       
-
-        console.log('imprimimos price');
-        console.log(data[0].id);
-
-       // this.idprice = this.price.data[0].id;
-
-        
-        
-
-      //  this.checkout(PriceId);
 
       },
       err => {
@@ -175,7 +146,7 @@ export class DetalleProductoComponent implements OnInit {
       }
     );
 
-    
+
   }
 
 }

@@ -10,28 +10,28 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) { }
 
-  cartURL =  'http://127.0.0.1/api/cart';
+  cartURL = 'http://127.0.0.1/api/cart';
 
-  public lista(): Observable<Cart[]>{
+  public lista(): Observable<Cart[]> {
 
     return this.httpClient.get<Cart[]>(this.cartURL);
   }
-  
-  public save(cart: Cart): Observable<any>{
+
+  public save(cart: Cart): Observable<any> {
 
     return this.httpClient.post<any>(this.cartURL, cart);
   }
 
-  public detail(id: number): Observable<Cart>{
+  public detail(id: number): Observable<Cart> {
     return this.httpClient.get<Cart>(this.cartURL + `/${id}`);
   }
 
-  public update(id: number, cart: Cart): Observable<any>{
+  public update(id: number, cart: Cart): Observable<any> {
     return this.httpClient.put<any>(this.cartURL + `/${id}`, cart);
   }
 
 
-  public delete(id: number): Observable<any>{
+  public delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.cartURL + `/${id}`);
   }
 

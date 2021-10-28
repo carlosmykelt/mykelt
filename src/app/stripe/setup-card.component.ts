@@ -8,8 +8,8 @@ import { ProductoService } from '../service/producto.service';
 })
 export class SetupCardComponent implements OnInit {
 
-  constructor(    private productoService: ProductoService,
-    ) { }
+  constructor(private productoService: ProductoService,
+  ) { }
 
   ngOnInit(): void {
 
@@ -18,15 +18,12 @@ export class SetupCardComponent implements OnInit {
 
       },
       err => {
-        // this.toastr.error(err.error.mensaje, 'Error', {
-        //   timeOut: 3000
-        // });
-        // this.router.navigate(['/']);
+
       }
     );
 
   }
-// Necesito obtener el id del usuario que está logueado
+
 
 
 }

@@ -8,8 +8,7 @@ export const environment = {
   productoURL: 'http://localhost:8080/producto/',
   authURL: 'http://localhost:8080/auth/',
   stripeId: 'pk_live_51JRiEIEDzo7bolN0lD3HL3bvc8EjTZFupOWKYFtStB7hLsBOy9DfkEjScIOMfxRMAnmZ4icgvJSSXsw9qlMLhrhD00NN8HoFSb'
-  // pk_live_51JRiEIEDzo7bolN0lD3HL3bvc8EjTZFupOWKYFtStB7hLsBOy9DfkEjScIOMfxRMAnmZ4icgvJSSXsw9qlMLhrhD00NN8HoFSb
-  // test     pk_test_51JRiEIEDzo7bolN088LIgi5eh0JTbRj3EurNrzaXPvxNxsahf4UNZFIhYIoSEBoa9Hg9KIuyCXozhsugpXWGToyW00N8wnTgEu
+
 };
 //Lo ponemos aquí porque de momento estamos en desarrollo
 

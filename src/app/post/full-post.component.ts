@@ -14,9 +14,7 @@ export class FullPostComponent implements OnInit {
 
   post: Post = null;
 
-  // image: File = null;
-
-  constructor(    
+  constructor(
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
@@ -33,8 +31,6 @@ export class FullPostComponent implements OnInit {
       data => {
         this.post = data;
 
-        // this.cargando = false;
-
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Error', {
@@ -42,24 +38,9 @@ export class FullPostComponent implements OnInit {
         });
         this.volver();
       });
-
   }
 
-  // imagen(): void{
-  //   this.postService.image(16).subscribe(
-  //     dataimg => {
-  //       console.log('hola');
-  //       this.image = dataimg;
 
-  //     }, 
-  //     err => {
-  //       this.toastr.error(err.error.mensaje, 'Error', {
-  //         timeOut: 3000
-  //       });
-  //     }
-  //   );
-  // }
-  
   volver(): void {
     this.router.navigate(['/blog']);
   }

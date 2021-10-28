@@ -9,7 +9,7 @@ export class Post {
     constructor(name: string, header: string, body: string, image: File) {
         this.name = name;
         this.header = header;
-        this.body = body; 
+        this.body = body;
         this.image = image;
 
     }

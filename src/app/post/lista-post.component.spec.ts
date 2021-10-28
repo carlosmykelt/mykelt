@@ -23,13 +23,4 @@ describe('ListaPostComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe empezar por la primera página', () => {
-    component.cargarPosts();
-    expect(component.page).toBe(1);
-  });
-
-  it('Debe tener más de 2 posts', () => {
-    component.cargarPosts();
-    expect(component.posts).toBeGreaterThan(2);
-  });
 });

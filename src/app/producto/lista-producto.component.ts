@@ -19,17 +19,15 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./lista-producto.component.css']
 })
 export class ListaProductoComponent implements OnInit {
-  
+
 
   productos: any[] = [];
 
   cartProduct: Cart[];
 
   price: any[] = [];
-  
+
   cargado: boolean = false;
-  
-  // productosCartera: Producto[] = [];
 
   cargando: boolean = true;
 
@@ -46,7 +44,7 @@ export class ListaProductoComponent implements OnInit {
   filterPost = '';
 
   totalLength: any;
-  page:number = 1;
+  page: number = 1;
 
   constructor(
 
@@ -63,23 +61,22 @@ export class ListaProductoComponent implements OnInit {
 
     this.titleService.setTitle('Productos | MYKELT');
 
-    this.cargarProductos(); // Carga los productos
+    if (this.tokenService.isLogged()) {
+      this.tokenService.timeToken();
+    }
 
+    this.cargarProductos(); // Carga los productos
 
     this.isAdmin = this.tokenService.isAdmin();
 
-    //  ---------
 
 
 
   }
 
-  // SistemaEuropeo(SistemaAmericano :number){ // Lo modifico
-  //   let TerConComa = this.DecimalPipe.transform(SistemaAmericano, "1.2-2", 'es')
-  //   return TerConComa;
-  // }
 
-  onPageChange(page: number){
+
+  onPageChange(page: number) {
     this.page = page;
     window.scrollTo(0, 0);
   }
@@ -93,9 +90,9 @@ export class ListaProductoComponent implements OnInit {
         this.productos = data; // lo carga en el Array que hemos creado, llamado productos
 
         console.log(data);
-        
+
         this.totalLength = data.length;
-        
+
         this.cargado = true;
 
       },
@@ -124,7 +121,7 @@ export class ListaProductoComponent implements OnInit {
     );
   }
 
-  addCart(productoId: string, quantity: number){   // TIENE QUE RECIBIR EL PRODUCTID Y EL QUANTITY
+  addCart(productoId: string, quantity: number) {   // Recibe el productId y la cantidad 
 
     console.log('Este es el producto id: ' + productoId);
     console.log('Esta es la cantidad: ' + quantity);
