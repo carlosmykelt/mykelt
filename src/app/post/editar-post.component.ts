@@ -75,6 +75,7 @@ export class EditarPostComponent implements OnInit {
       }
     );
 
+console.log('ng on init bien');
 
   }
 

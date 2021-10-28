@@ -26,11 +26,6 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('logueado o no');
-    
-    console.log(this.tokenService.isLogged());
-
-    console.log(this.tokenService.getToken())
     
     if(this.tokenService.isLogged()){
       this.tokenService.timeToken();

@@ -1,12 +1,12 @@
 <app-menu></app-menu>
 <div class="wrapper">
 
-    <div class="container mb-5 text-center h1 mt-5">
+    <div class="container display-4 bold600 my-5 py-5 text-center ">
         Restablece tu contraseña 
     </div>
 
     <div class="container mb-5 d-flex justify-content-center">
-        <div class="card col-lg-5 mt-5 mx-0 px-0">
+        <div class="card corner shadow col-lg-5 mx-0 px-0">
             <div class="card-body my-3 mx-md-3">
                 <div class="mb-3">
                     <form #f="ngForm" (ngSubmit)="restore()" novalidate>
@@ -30,7 +30,7 @@
                                 [(ngModel)]="confirmedPassword" required>
                         </div>
 
-                        <button class="btn boton shadow btn-block" [disabled]="!f.valid">
+                        <button class="btn btn-dark corner shadow btn-block" [disabled]="!f.valid">
                             <i class="fas fa-sign-in-alt"></i> Siguiente
                         </button>
 

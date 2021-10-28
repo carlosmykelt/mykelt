@@ -69,6 +69,10 @@ export class CartComponent implements OnInit {
 
     this.cargarCarrito();
 
+
+
+
+
   }
 
   boxChange(price: number, quantity: number, check: boolean){
@@ -76,16 +80,48 @@ export class CartComponent implements OnInit {
     //Si lo tiene, usa el método totalprice para añadirlo
     //Si no lo tiene, no lo añadas
 // price
-    console.log(price);
-    console.log(quantity);
-    console.log(check);
+
     
 
     if(check){
-      console.log('check si');
+
+     //Identifica el elemento del array cartProducts
+     //Ponle livemode o check true
+
+     console.log('check si');
+     console.log('imprme cartproduct');
+     console.log(this.cartProducts);
+     
+     
+
+    //  for(let cartProduct of this.cartProducts){
+    //   if(cartProduct.id == productId){
+        
+    //     cartProduct.livemode == true;
+    //     console.log('imprimo livemode');
+    //     console.log(cartProduct.livemode);
+    //   }
+    // }
+
+
       
       this.TotalPrice(price, quantity)
     }else{
+
+      console.log('check no');
+
+      // for(let cartProduct of this.cartProducts){
+      //   if(cartProduct.id == productId){
+          
+      //     cartProduct.livemode == false;
+      //     console.log('imprimo livemode');
+      //     console.log(cartProduct.livemode);
+          
+      //   }
+      // }
+
+      console.log(this.cartProducts);
+
       this.RemoveOfTotalPrice(price, quantity)
       
     }
@@ -141,6 +177,7 @@ export class CartComponent implements OnInit {
             
               data.quantity = nombre.quantity;
               data.idDB = nombre.id;
+              data.select = false;
            
 
               this.cartProducts.push(data);   // Tenemos un array con todos los datos de la API + quantity + nombre
@@ -178,11 +215,7 @@ export class CartComponent implements OnInit {
 
   }
 
-  imprimeProducto(): void {
-    console.log('ESTO ES EL IMPRIME: ')
-    console.log(this.cartProducts)
 
-  }
 
   resta(idproduct: string, quantity: number) {
 
@@ -244,7 +277,7 @@ export class CartComponent implements OnInit {
 
     // Recorremos el producto. Si el id coincide y además, el check es true, restamos al cuadro del precio
     for(let cartProduct of this.cartProducts){
-      if(cartProduct.id == idproduct && cartProduct.livemode == true){
+      if(cartProduct.id == idproduct && cartProduct.select == true){
         //Resta al cuadro, el precio*quantity
         this.PrecioTotal = this.PrecioTotal - Number(data.metadata.price);
       }
@@ -313,7 +346,7 @@ export class CartComponent implements OnInit {
 
        // Recorremos el producto. Si el id coincide y además, el check es true, sumamos al cuadro del precio
        for(let cartProduct of this.cartProducts){
-        if(cartProduct.id == idproduct && cartProduct.livemode == true){
+        if(cartProduct.id == idproduct && cartProduct.select == true){
           //Suma al cuadro, el precio*quantity
           this.PrecioTotal = this.PrecioTotal + Number(data.metadata.price);
         }
@@ -343,7 +376,7 @@ export class CartComponent implements OnInit {
         if(cartProduct.idDB == cart.id){
           console.log(cartProduct.idDB + ' ES IGUAL A ' + cart.id);
           
-          if(cartProduct.livemode == true){
+          if(cartProduct.select == true){
             console.log('ADEMÁS DE IGUAL, EL CHECK ES TRUE');
             
             this.PricesArray.push({ price: cart.idPrice, quantity: cart.quantity })
