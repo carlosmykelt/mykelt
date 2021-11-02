@@ -30,8 +30,10 @@ export class ListaPostComponent implements OnInit {
       this.tokenService.timeToken();
     }
 
-
     this.cargarPosts();
+
+    
+    
   }
 
   onPageChange(page: number) {
@@ -44,12 +46,12 @@ export class ListaPostComponent implements OnInit {
     this.postService.lista().subscribe(
       data => {
         this.posts = data; // lo carga en el Array que hemos creado, llamado posts
-
+        
         this.totalLength = data.length;
 
       },
       err => {
-        console.log(err);
+
       }
     );
 

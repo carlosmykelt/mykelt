@@ -38,8 +38,6 @@ export class ResetPasswordComponent implements OnInit {
     this.resetService.email(this.EmailReset).subscribe(
       data=> {
 
-        console.log(data);
-
         this.toastr.success('Correo electrónico enviado', '', {
           timeOut: 3000
         });

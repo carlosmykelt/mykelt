@@ -47,15 +47,10 @@ export class DetalleProductoComponent implements OnInit {
 
     const id = this.activatedRoute.snapshot.params.idProduct;
 
-    console.log('Esto es lo que sale del snapshot params: ' + id);
-
     this.productoService.detail(id).subscribe(
       data => {
 
         this.producto = data;
-
-        console.log('imprimiendo detalles')
-        console.log(this.producto)
 
         this.cargado = true;
 
@@ -99,16 +94,13 @@ export class DetalleProductoComponent implements OnInit {
     this.productoService.price(productoId).subscribe(
       data => {
 
-        console.log('imprimimos price');
-        console.log(data.data[0].id);
-
         let idprice = data.data[0].id;
 
         this.crear(productoId, idprice, quantity);
 
       },
       err => {
-        console.log(err);
+
       }
     );
 
@@ -142,7 +134,7 @@ export class DetalleProductoComponent implements OnInit {
 
       },
       err => {
-        console.log(err);
+
       }
     );
 

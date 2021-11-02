@@ -4,26 +4,33 @@
 
         <div class="py-5">
 
-            <div class=" container col-lg-7 bg-white  my-5 py-4 px-3 ">
+            <div class="container col-lg-7 bg-white  my-5 py-4 px-3 ">
+
+                <img width="500px" src="{{post.imageURL}}" class="img-fluid corner mx-auto d-block mb-4" alt="">
+
+                    <button class="btn btn-dark corner bold600 px-5 mb-5 mx-auto d-block" (click)="this.editIMG=!this.editIMG" 
+                    [style.max-width.px]="200">
+                    Editar imagen
+                    </button>
+
+                <ngx-dropzone class="mx-5" *ngIf="editIMG" [style.min-height.px]="300" (change)="onSelect($event)" >
+                    <ngx-dropzone-label class="h2">Arrastra y suelta una imagen</ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)" class="mx-auto"  [style.min-height.px]="250">
+                        <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                      </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+
                 <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
 
-                    <div class="form-group mb-5">
-
-
+                    <!-- <div class="form-group mb-5">
                         <input (change)="captura($event)" type="file">
-                        <!-- Change detecta cuando el input tiene un cambio.
-                Le ponemos la función captura con el parámetro evento -->
-                    </div>
-
-
-                    <div *ngIf="previsualizacion; else imgpost">
-                        <img width="500px" [src]="previsualizacion" alt="">
                     </div>
 
                     <ng-template #imgpost>
                         <img width="500px" [src]="'http://127.0.0.1/storage/' + post.image"
                             class="img-fluid cornerlista mx-auto d-block" alt="">
-                    </ng-template>
+                    </ng-template> -->
+
 
                     <div class="form-group mt-5">
                         <input type="text" class="form-control" id="name" name="name" [(ngModel)]="post.name" required

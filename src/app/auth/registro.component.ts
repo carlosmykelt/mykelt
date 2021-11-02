@@ -6,6 +6,7 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registro',
@@ -19,6 +20,8 @@ export class RegistroComponent implements OnInit {
   password: string;
   password_confirmation: string;
   email: string;
+
+  heroku: string = environment.herokuURL;
 
   errMsj: string;
 
@@ -45,14 +48,13 @@ export class RegistroComponent implements OnInit {
   }
 
   confirm() {
-    console.log(this.password)
-    console.log(this.password_confirmation)
+
     if (this.password_confirmation == this.password) {
       this.confirmation = true
-      console.log(this.confirmation)
+
     } else {
       this.confirmation = false
-      console.log(this.confirmation)
+
     }
   }
 

@@ -10,7 +10,7 @@ export class MenuComponent implements OnInit {
 
   isLogged = false;  // variable de si está logueado
 
-  isAdmin: number = window.localStorage.role;
+  isAdmin = false;
 
   nombreUsuario: string;
 
@@ -22,6 +22,8 @@ export class MenuComponent implements OnInit {
 
     this.isLogged = this.tokenService.isLogged();
 
+    this.isAdmin = this.tokenService.isAdmin();
+   
   }
 
   onLogOut(): void { // Accedes a través del html, para el logout

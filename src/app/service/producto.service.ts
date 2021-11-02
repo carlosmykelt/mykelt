@@ -9,36 +9,36 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductoService {
 
-  productoURL = 'http://127.0.0.1/api/products';
+  productURL = environment.herokuURL + 'api/products';
 
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<any> {
-    return this.httpClient.get<any>(this.productoURL);
+    return this.httpClient.get<any>(this.productURL);
   }
 
   public price(priceId: string): Observable<any> {
-    return this.httpClient.get<any>(this.productoURL + `/price/${priceId}`);
+    return this.httpClient.get<any>(this.productURL + `/price/${priceId}`);
   }
 
   public detail(id: string): Observable<any> {
-    return this.httpClient.get<any>(this.productoURL + `/${id}`);
+    return this.httpClient.get<any>(this.productURL + `/${id}`);
   }
 
   public card(): Observable<any> {
-    return this.httpClient.get<any>(this.productoURL + `/card`);
+    return this.httpClient.get<any>(this.productURL + `/card`);
   }
 
   public save(producto: Producto): Observable<any> {
-    return this.httpClient.post<any>(this.productoURL, producto);
+    return this.httpClient.post<any>(this.productURL, producto);
   }
 
   public update(id: number, producto: Producto): Observable<any> {
-    return this.httpClient.put<any>(this.productoURL + `/${id}`, producto);
+    return this.httpClient.put<any>(this.productURL + `/${id}`, producto);
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.productoURL + `/${id}`);
+    return this.httpClient.delete<any>(this.productURL + `/${id}`);
   }
 
 }

@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class PostService {
 
   constructor(private httpClient: HttpClient) { }
 
-  postURL = 'http://127.0.0.1/api/posts';
+  postURL = environment.herokuURL + 'api/posts';
 
   params: HttpParams = new HttpParams().set("_method", "PUT"); 
 
@@ -27,7 +28,7 @@ export class PostService {
   }
 
 
-  public save(post: FormData): Observable<any> {
+  public save(post: Post): Observable<any> {
 
     return this.httpClient.post<any>(this.postURL, post);
   }
@@ -36,9 +37,9 @@ export class PostService {
     return this.httpClient.get<Post>(this.postURL + `/${id}`);
   }
 
-
-  public update(post: FormData): Observable<any> {
-    return this.httpClient.post<any>(this.postURL + `/` + post.get(`id`) + '?_method=PUT', post);
+  public update(id: number, post: Post ): Observable<any> {
+  
+    return this.httpClient.put<any>(this.postURL + `/${id}`, post);
   }
 
   public delete(id: number): Observable<any> {

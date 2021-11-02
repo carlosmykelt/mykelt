@@ -33,7 +33,6 @@ export class IndexComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
 
       if (params['token']) {
-        console.log(params.token);
 
         this.tokenoauth = params.token;
 
@@ -75,14 +74,13 @@ export class IndexComponent implements OnInit {
     if (this.tokenService.isLogged) {
 
       this.mitoken = this.tokenService.getToken();
-      console.log(this.mitoken)
+
       const payload = this.mitoken.split('.')[1];
       //split convierte un array a partir de un caracter, le ponemos posición 1 para acceder al payload
       const payloadDecoded = atob(payload);
-      console.log(payloadDecoded)
+
       const values = JSON.parse(payloadDecoded); // parseamos a JSON
-      console.log('valores: ')
-      console.log(values)
+
       const username = values.sub;
 
       this.userEmail = window.localStorage.UserEmail;

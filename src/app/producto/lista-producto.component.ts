@@ -89,15 +89,13 @@ export class ListaProductoComponent implements OnInit {
       data => {
         this.productos = data; // lo carga en el Array que hemos creado, llamado productos
 
-        console.log(data);
-
         this.totalLength = data.length;
 
         this.cargado = true;
 
       },
       err => {
-        console.log(err);
+    
       }
     );
 
@@ -123,8 +121,7 @@ export class ListaProductoComponent implements OnInit {
 
   addCart(productoId: string, quantity: number) {   // Recibe el productId y la cantidad 
 
-    console.log('Este es el producto id: ' + productoId);
-    console.log('Esta es la cantidad: ' + quantity);
+ 
 
   }
 

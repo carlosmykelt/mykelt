@@ -59,8 +59,6 @@ export class CartComponent implements OnInit {
 
     this.isLogged = this.tokenService.isLogged();
 
-    console.log(this.isLogged)
-
     this.cargarCarrito();
 
   }
@@ -133,7 +131,7 @@ export class CartComponent implements OnInit {
         }
       },
       err => {
-        console.log(err);
+
       }
     );
   }
@@ -237,7 +235,6 @@ export class CartComponent implements OnInit {
 
   PrecioSuma(idproduct) {
 
-    console.log(this.carrito);
     this.productoService.detail(idproduct).subscribe(
       data => {
 

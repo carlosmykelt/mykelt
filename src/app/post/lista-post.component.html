@@ -19,11 +19,11 @@
           <tr>
 
             <a routerLink="{{post.id}}" *ngIf="router.url === '/blog'">
-              <img [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid cornerlista mx-auto d-block">
+              <img src="{{post.imageURL}}" class="img-fluid cornerlista mx-auto d-block">
             </a>
 
             <a routerLink="blog/{{post.id}}" *ngIf="router.url !== '/blog'">
-              <img [src]="'http://127.0.0.1/storage/' + post.image" class="img-fluid cornerlista mx-auto d-block">
+              <img src="{{post.imageURL}}" class="img-fluid cornerlista mx-auto d-block">
             </a>
 
           </tr>

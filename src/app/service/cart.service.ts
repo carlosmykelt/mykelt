@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Cart } from '../models/cart';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) { }
 
-  cartURL = 'http://127.0.0.1/api/cart';
+  cartURL = environment.herokuURL + 'api/cart';
 
   public lista(): Observable<Cart[]> {
 

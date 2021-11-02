@@ -14,7 +14,7 @@ export class ResetService {
 
   constructor(private httpClient: HttpClient) { }
 
-  passwordURL = 'http://127.0.0.1/api/password';
+  passwordURL = environment.herokuURL + 'api/password';
 
   public email(email: Email): Observable<any> {
     return this.httpClient.post<any>(this.passwordURL + `/email`, email);

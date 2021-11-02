@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'AuthToken';  // de clave
 const HOUR = 'Hour';  // de clave
+const ROL = 'Rol'
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,30 @@ export class TokenService {
 
   ) { }
 
+  public isAdmin(): boolean{
+    // if(window.localStorage.role = true){
+    //   return true;
+    // }
+    // return false;
 
+
+    if(localStorage.getItem(ROL) == 'admin'){
+      return true;
+    }
+    return false;
+
+  }
+
+  public setRole(rol: boolean): void{
+
+    if(rol){
+      window.localStorage.setItem(ROL, 'admin');
+    }else{
+      window.localStorage.setItem(ROL, 'user');
+    }
+
+
+  }
 
   public setToken(token: string): void {
     window.localStorage.removeItem(TOKEN_KEY);
@@ -64,7 +88,7 @@ export class TokenService {
     var ONE_HOUR = 60 * 60 * 1000;
 
     var diference = nowNumber - hourNumber
-    console.log('La diferencia es: ' + (diference / 1000))
+
     if (diference > ONE_HOUR) {
       window.localStorage.clear();
     }
@@ -93,18 +117,18 @@ export class TokenService {
     return username;
   }
 
-  public isAdmin(): boolean {
-    if (!this.isLogged()) {
-      return false;
-    }
+  // public isAdmin(): boolean {
+  //   if (!this.isLogged()) {
+  //     return false;
+  //   }
 
 
-    if (window.localStorage.role == 1) {
-      return true;
-    }
-    return false;
+  //   if (window.localStorage.role == true) {
+  //     return true;
+  //   }
+  //   return false;
 
-  }
+  // }
 
   //Para cerrar sesión
   public logOut(): void {

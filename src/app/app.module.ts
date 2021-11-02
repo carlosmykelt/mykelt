@@ -43,8 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AtribucionesComponent } from './footer/atribuciones.component';
 import { PreguntasComponent } from './footer/preguntas.component';
 import { ContactoComponent } from './footer/contacto.component';
-
-
+import {CloudinaryModule} from '@cloudinary/angular';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 registerLocaleData(localeEs, 'es');
 
@@ -91,7 +91,9 @@ registerLocaleData(localeEs, 'es');
     RouterModule,
     ReactiveFormsModule,
     CKEditorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CloudinaryModule, 
+    NgxDropzoneModule
 
   ],
   providers: [

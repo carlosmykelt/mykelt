@@ -4,13 +4,14 @@ export class Post {
     name: string;
     header: string;
     body: string;
-    image: File;
+    imageURL: string;
 
-    constructor(name: string, header: string, body: string, image: File) {
+    constructor(name: string, header: string, body: string, imageURL: string, id?: number) {
+        this.id = id;
         this.name = name;
         this.header = header;
         this.body = body;
-        this.image = image;
+        this.imageURL = imageURL;
 
     }
 

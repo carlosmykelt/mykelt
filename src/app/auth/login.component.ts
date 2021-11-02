@@ -5,6 +5,7 @@ import { LoginUsuario } from '../models/login-usuario';
 import { TokenService } from '../service/token.service';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   errMsj: string;  // creada para usarla en el mensaje de error
+
+  heroku: string = environment.herokuURL;
 
   constructor(
     private tokenService: TokenService,
@@ -64,7 +67,11 @@ export class LoginComponent implements OnInit {
 
         window.localStorage.UserName = data.name;
 
-        window.localStorage.role = data.role;
+        // window.localStorage.role = data.role;
+        // if(data.role == true){
+        //   window.localStorage.role = data.role;
+        // }
+        this.tokenService.setRole(data.role);
 
 
         this.router.navigate(['/']);  // lo mandamos al index

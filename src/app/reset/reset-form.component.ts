@@ -34,13 +34,12 @@ export class ResetFormComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
 
       if(params['token']){
-      console.log(params.token); 
 
       this.token = params.token;
 
       } else{
 
-        console.log('No hay token')
+ 
       }
 
     })
@@ -49,12 +48,11 @@ export class ResetFormComponent implements OnInit {
   restore(){
 
     if( this.password == this.confirmedPassword ){
-    console.log('iguales')
+
 
     this.reset = new Reset(this.email, this.token, this.password);
 
-    console.log(this.reset)
-
+ 
     this.resetService.reset(this.reset).subscribe( 
       data => { 
 
@@ -72,7 +70,7 @@ export class ResetFormComponent implements OnInit {
       });
 
     }else{
-      console.log('distintas')
+ 
     }
   }
 

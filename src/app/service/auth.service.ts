@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  authURL = 'http://127.0.0.1/api/';
+  authURL = environment.herokuURL + 'api/';
 
   constructor(private httpClient: HttpClient) { }
 

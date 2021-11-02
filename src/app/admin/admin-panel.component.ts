@@ -35,7 +35,7 @@ export class AdminPanelComponent implements OnInit {
         this.posts = data; // lo carga en el Array creado, llamado posts
       },
       err => {
-        console.log(err);
+
       }
     );
 
