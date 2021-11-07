@@ -1,1 +1,4 @@
 node_modules
+
+environment.ts
+environment.prod.ts
