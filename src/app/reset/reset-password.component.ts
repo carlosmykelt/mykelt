@@ -29,6 +29,9 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Restablecer contraseña | MYKELT');
+
+    window.scrollTo(0, 0);
+    
   }
 
   restore(){

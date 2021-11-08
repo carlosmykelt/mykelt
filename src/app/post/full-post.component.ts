@@ -28,7 +28,7 @@ export class FullPostComponent implements OnInit {
 
     this.titleService.setTitle('Artículo | MYKELT');
 
-
+    window.scrollTo(0, 0);
     
     const cld = new Cloudinary({
       cloud: {

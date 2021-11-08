@@ -67,7 +67,7 @@
 
         </div>
 
-<!-- 
+        <!-- 
         <div *ngIf="oauth" class="m-lg-5">
 
             <div class="h5 mt-4">Cuenta iniciada con OAUTH. </div>
@@ -81,7 +81,7 @@
 
         </div> -->
     </div>
-    
+
 
     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         width="100%" id="blobSvg">
@@ -100,7 +100,7 @@
 
     <div class="blackbackground text-white pb-0 mb-5 pt-5 pt-lg-4">
 
-        <div class="container col-md-8">
+        <div class="container col-md-8" [style.max-width.px]="1000">
 
             <div class="d-flex align-items-center flex-column flex-lg-row ">
 
@@ -120,7 +120,7 @@
 
 
 
-    <div class="container my-5 pt-1 pb-1 col-lg-8">
+    <div class="container my-5 pt-1 pb-1 ">
         <div class="d-flex align-items-center flex-column flex-md-row my-5">
             <div class="p-2 flex-fill mb-3">
                 <img src="assets/imgs/hbitcoin.png" class="img-fluid mx-auto d-block" style="min-width: 150px;">
@@ -130,8 +130,22 @@
                 un tercero con Ethereum o más escalables como Cardano.</div>
         </div>
 
+        <!-- <svg viewBox="100 -15 800 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100%" id="blobSvg">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color: rgb(249, 245, 238);"></stop>
+                <stop offset="100%" style="stop-color: rgb(255, 247, 228);"></stop>
+            </linearGradient>
+        </defs>
+        <path id="blob"
+            d="M466,298.5Q467,347,428.5,376Q390,405,347.5,412.5Q305,420,264.5,457.5Q224,495,188.5,456.5Q153,418,116,396Q79,374,62,334Q45,294,27,246.5Q9,199,32,153.5Q55,108,102.5,92.5Q150,77,187.5,46Q225,15,271,29.5Q317,44,353.5,69.5Q390,95,407.5,133.5Q425,172,445,211Q465,250,466,298.5Z"
+            fill="url(#gradient)"></path>
+    </svg> -->
+
+
         <svg viewBox="0 0 90 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="95%" id="blobSvg">
+            width="90%" id="blobSvg">
             <defs>
                 <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" style="stop-color: rgb(249, 245, 238);"></stop>

@@ -16,6 +16,8 @@ export class PreguntasComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('Preguntas | MYKELT');
+    
+    window.scrollTo(0, 0);
   }
 
 }

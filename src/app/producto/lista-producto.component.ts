@@ -69,12 +69,7 @@ export class ListaProductoComponent implements OnInit {
 
     this.isAdmin = this.tokenService.isAdmin();
 
-
-
-
   }
-
-
 
   onPageChange(page: number) {
     this.page = page;
@@ -82,7 +77,6 @@ export class ListaProductoComponent implements OnInit {
   }
 
   cargarProductos(): void {
-
 
 
     this.productoService.lista().subscribe(
